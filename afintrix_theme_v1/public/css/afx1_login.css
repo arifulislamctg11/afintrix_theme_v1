@@ -1,0 +1,346 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · SIGN IN
+
+   The split hero from the sign-in mockup: an ink brand panel on the left, the
+   form on the light deck to the right.
+
+   Everything is scoped under `.afx-login`, a class afx1_login.js puts on
+   <body> only when frappe has actually rendered the login sections. This file
+   ships in the *web* bundle, which frappe includes on every portal page, so
+   nothing here may apply unscoped. Tokens are redeclared for the same reason —
+   the desk bundle that normally defines them is not loaded out here.
+   ========================================================================== */
+
+.afx-login {
+	--afx-brand: #1e39d6;
+	--afx-brand-700: #182faf;
+	--afx-brand-050: #eef1fe;
+	--afx-brand-200: #c0cbf8;
+	--afx-gold: #d5aa55;
+	--afx-gold-lum: #e4c27e;
+
+	/* The brand panel carries design 2's brand blue rather than the rail ink.
+	   Text tokens are picked for contrast on #1E39D6: white clears AAA, the
+	   muted periwinkle ~5.4:1 and the lifted gold ~4.7:1, both AA at these
+	   sizes. */
+	--afx-chrome: #1e39d6;
+	--afx-chrome-tx: #ffffff;
+	--afx-chrome-mut: #cbd4fa;
+
+	--afx-canvas: #eff2f7;
+	--afx-panel: #ffffff;
+	--afx-sunk: #f5f7fa;
+	--afx-line: #dfe4ec;
+
+	--afx-ink-h: #0b0f1c;
+	--afx-ink-2: #3a4356;
+	--afx-ink-3: #697488;
+	--afx-ink-4: #9aa4b6;
+
+	/* frappe's own login rules read these, and the desk token file is not
+	   loaded on website pages — so the brand has to be restated here. */
+	--primary: #1e39d6;
+	--primary-color: #1e39d6;
+	--brand-color: #1e39d6;
+	--btn-primary: #1e39d6;
+	--border-primary: #1e39d6;
+
+	--afx-f-head: "Montserrat", "Segoe UI", system-ui, sans-serif;
+	--afx-f-body: "Poppins", "Segoe UI", system-ui, sans-serif;
+
+	min-height: 100vh;
+	margin: 0;
+	background: var(--afx-canvas);
+	font-family: var(--afx-f-body);
+	color: var(--afx-ink-h);
+	display: grid;
+	grid-template-columns: minmax(380px, 42%) minmax(0, 1fr);
+}
+
+/* ============================= BRAND PANEL ============================= */
+
+.afx-login-brand {
+	background: var(--afx-chrome);
+	color: var(--afx-chrome-tx);
+	display: flex;
+	flex-direction: column;
+	padding: 38px 44px;
+	position: relative;
+	overflow: hidden;
+}
+
+.afx-login-brand-mark {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.afx-login-brand-mark img {
+	width: 34px;
+	height: 34px;
+	border-radius: 9px;
+	background: #ffffff;
+	padding: 4px;
+	object-fit: contain;
+}
+
+.afx-login-brand-mark span {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: -0.01em;
+}
+
+.afx-login-pitch {
+	margin: auto 0;
+	padding: 40px 0;
+}
+
+.afx-login-eyebrow {
+	font-family: var(--afx-f-head);
+	font-weight: 600;
+	font-size: 11px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--afx-gold-lum);
+	margin-bottom: 14px;
+}
+
+.afx-login-pitch h1 {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 1.22;
+	letter-spacing: -0.02em;
+	color: var(--afx-chrome-tx);
+	margin: 0 0 14px;
+	max-width: 15ch;
+}
+
+.afx-login-pitch p {
+	font-size: 13px;
+	line-height: 1.7;
+	color: var(--afx-chrome-mut);
+	max-width: 40ch;
+	margin: 0 0 30px;
+}
+
+.afx-login-foot {
+	font-size: 11px;
+	color: var(--afx-chrome-mut);
+}
+
+/* ============================== FORM DECK ============================== */
+
+.afx-login main,
+.afx-login .page-content,
+.afx-login > .afx-login-deck {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 48px 24px;
+	max-width: none;
+	width: 100%;
+}
+
+.afx-login .for-login,
+.afx-login .for-email-login,
+.afx-login .for-forgot,
+.afx-login .for-signup,
+.afx-login .for-login-with-email-link {
+	width: 100%;
+	max-width: 400px;
+}
+
+.afx-login .page-card {
+	width: 100%;
+	max-width: 400px;
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 14px;
+	box-shadow: 0 2px 6px rgba(11, 15, 28, 0.06), 0 8px 20px rgba(11, 15, 28, 0.07);
+	padding: 28px;
+	margin: 0 auto;
+}
+
+.afx-login .page-card-head {
+	padding: 0 0 18px;
+	border: 0;
+}
+
+.afx-login .page-card-head .indicator,
+.afx-login .page-card-head h4,
+.afx-login .page-card-head .page-card-title {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 20px;
+	letter-spacing: -0.015em;
+	color: var(--afx-ink-h);
+	margin: 0 0 4px;
+}
+
+.afx-login .page-card-subtitle {
+	font-size: 12.5px;
+	color: var(--afx-ink-3);
+	margin: 0;
+}
+
+/* frappe puts its own logo in the card head; the brand panel already carries
+   the mark, so the card leads with the words instead. */
+.afx-login .page-card-head .app-logo,
+.afx-login .page-card-head img {
+	display: none;
+}
+
+.afx-login .page-card-body {
+	padding: 0;
+}
+
+.afx-login .form-group {
+	margin-bottom: 16px;
+}
+
+.afx-login .form-label {
+	font-family: var(--afx-f-body);
+	font-size: 11.5px;
+	font-weight: 600;
+	color: var(--afx-ink-2);
+	margin-bottom: 5px;
+}
+
+.afx-login .form-control {
+	height: 38px;
+	background: var(--afx-sunk);
+	border: 1px solid var(--afx-line);
+	border-radius: 8px;
+	font-size: 13px;
+	color: var(--afx-ink-h);
+	box-shadow: none;
+}
+
+.afx-login .form-control:focus {
+	background: var(--afx-panel);
+	border-color: var(--afx-brand);
+	box-shadow: 0 0 0 3px var(--afx-brand-050);
+	outline: none;
+}
+
+.afx-login .field-icon {
+	color: var(--afx-ink-4);
+}
+
+.afx-login .forgot-password-message {
+	margin-top: 7px;
+	font-size: 12px;
+}
+
+.afx-login .forgot-password-message a,
+.afx-login .sign-up-message a,
+.afx-login a {
+	color: var(--afx-brand);
+}
+
+.afx-login .page-card-actions {
+	padding: 4px 0 0;
+}
+
+body.afx-login .page-card .btn-login,
+body.afx-login .page-card .btn-block,
+.afx-login .btn-primary,
+.afx-login .btn-default {
+	width: 100%;
+	height: 40px;
+	border-radius: 8px;
+	font-family: var(--afx-f-body);
+	font-size: 13px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+/* the submit button is the brand action, whatever frappe's default class says */
+body.afx-login .page-card .page-card-actions .btn-login[type="submit"],
+body.afx-login .page-card .page-card-actions .btn-primary {
+	background: var(--afx-brand);
+	border: 1px solid var(--afx-brand);
+	color: #ffffff;
+}
+
+body.afx-login .page-card .page-card-actions .btn-login[type="submit"]:hover,
+body.afx-login .page-card .page-card-actions .btn-primary:hover {
+	background: var(--afx-brand-700);
+	border-color: var(--afx-brand-700);
+}
+
+body.afx-login .page-card .page-card-actions .btn-default:not([type="submit"]) {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	color: var(--afx-ink-2);
+	font-weight: 500;
+}
+
+body.afx-login .page-card .page-card-actions .btn-default:not([type="submit"]):hover {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+.afx-login .login-error-banner {
+	border-radius: 8px;
+	font-size: 12.5px;
+}
+
+.afx-login .sign-up-message {
+	font-size: 12.5px;
+	color: var(--afx-ink-3);
+	margin-top: 14px;
+}
+
+.afx-login-links {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 22px;
+	font-size: 11.5px;
+	color: var(--afx-ink-4);
+}
+
+.afx-login-links a {
+	color: var(--afx-ink-3);
+	text-decoration: none;
+}
+
+.afx-login-links a:hover {
+	color: var(--afx-brand);
+}
+
+.afx-login-links i {
+	width: 1px;
+	height: 12px;
+	background: var(--afx-line);
+	display: inline-block;
+}
+
+/* ============================== NARROW ============================== */
+
+@media (max-width: 900px) {
+	.afx-login {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.afx-login-brand {
+		padding: 26px 24px;
+	}
+
+	.afx-login-pitch {
+		padding: 22px 0 4px;
+	}
+
+	.afx-login-pitch h1 {
+		font-size: 22px;
+	}
+
+	.afx-login-pitch svg,
+	.afx-login-foot {
+		display: none;
+	}
+}

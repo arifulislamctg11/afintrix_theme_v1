@@ -1,0 +1,180 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · DARK
+   The Sapphire dark tier. Brand and gold are lifted so they hold contrast
+   on ink; the rail goes darker than the panel so the tiers stay legible.
+   ========================================================================== */
+
+[data-theme="dark"] {
+	--afx-brand: #6e86f2;
+	--afx-on-brand: #080b18;
+	--afx-brand-600: #8296f4;
+	--afx-brand-700: #a3b2f8;
+	--afx-brand-800: #c2cbfb;
+	--afx-brand-050: #171e44;
+	--afx-brand-100: #1f2957;
+	--afx-brand-200: #2e3b78;
+	--afx-gold: #e2be79;
+	--afx-gold-ink: #ebce95;
+	--afx-gold-050: #2a2317;
+	--afx-gold-200: #4b3d22;
+
+	--afx-rail: #080b18;
+	--afx-rail-2: #151c3b;
+	--afx-rail-3: #1f2950;
+	--afx-rail-ink: #7c88b4;
+	--afx-rail-ink-2: #ffffff;
+
+	--afx-canvas: #0c101a;
+	--afx-panel: #131826;
+	--afx-sunk: #181e2c;
+	--afx-line: #252b3a;
+	--afx-line-2: #1b2130;
+
+	--afx-ink-h: #f7f8fb;
+	--afx-ink-2: #b4bccb;
+	--afx-ink-3: #8a93a5;
+	--afx-ink-4: #697488;
+
+	--afx-sh-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+	--afx-sh-2: 0 2px 6px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.45);
+	--afx-sh-3: 0 18px 48px rgba(0, 0, 0, 0.6);
+
+	/* frappe primitives */
+	--gray-50: #f7f8fb;
+	--gray-100: #e9ecf2;
+	--gray-200: #252b3a;
+	--gray-300: #2e3546;
+	--gray-400: #697488;
+	--gray-500: #8a93a5;
+	--gray-600: #a4adbd;
+	--gray-700: #252b3a;
+	--gray-800: #181e2c;
+	--gray-900: #0c101a;
+
+	--blue-50: #171e44;
+	--blue-100: #1f2957;
+	--blue-200: #2e3b78;
+	--blue-300: #3d4c96;
+	--blue-400: #5a6fd1;
+	--blue-500: #6e86f2;
+	--blue-600: #8296f4;
+	--blue-700: #a3b2f8;
+	--blue-800: #c2cbfb;
+	--blue-900: #dfe4fd;
+
+	--green-100: #12271e;
+	--green-300: #234e3b;
+	--green-600: #48b98a;
+	--green-700: #5ec89b;
+	--red-100: #2a1715;
+	--red-300: #582b26;
+	--red-600: #e8776b;
+	--red-700: #ef8a7f;
+	--amber-100: #292013;
+	--amber-300: #523f1d;
+	--amber-600: #dfa94d;
+	--amber-700: #e8b962;
+
+	--outline-gray-1: #252b3a;
+	--outline-gray-2: #2e3546;
+	--outline-gray-3: #3a4356;
+	--outline-gray-4: #697488;
+	--outline-gray-5: #b4bccb;
+	--outline-gray-modals: #252b3a;
+
+	--surface-gray-1: #181e2c;
+	--surface-gray-2: #1b2130;
+	--surface-gray-3: #252b3a;
+	--surface-gray-4: #2e3546;
+	--surface-gray-5: #8a93a5;
+	--surface-gray-6: #b4bccb;
+	--surface-gray-7: #f7f8fb;
+	--surface-menu-bar: #131826;
+	--surface-modal: #131826;
+	--surface-white: #131826;
+	--surface-blue-1: #171e44;
+	--surface-blue-2: #1f2957;
+	--surface-blue-3: #6e86f2;
+
+	--ink-gray-1: #252b3a;
+	--ink-gray-2: #2e3546;
+	--ink-gray-3: #697488;
+	--ink-gray-4: #8a93a5;
+	--ink-gray-5: #a4adbd;
+	--ink-gray-6: #b4bccb;
+	--ink-gray-7: #b4bccb;
+	--ink-gray-8: #d5dae4;
+	--ink-gray-9: #f7f8fb;
+	--ink-blue-1: #171e44;
+	--ink-blue-2: #8296f4;
+	--ink-blue-3: #6e86f2;
+
+	--bg-color: var(--afx-canvas);
+	--fg-color: var(--afx-panel);
+	--card-bg: var(--afx-panel);
+	--subtle-accent: var(--afx-sunk);
+	--subtle-fg: var(--afx-line-2);
+	--fg-hover-color: var(--afx-brand-050);
+	--control-bg: var(--afx-sunk);
+	--control-bg-on-gray: #202737;
+	--awesomebar-focus-bg: var(--afx-panel);
+	--modal-bg: var(--afx-panel);
+	--popover-bg: var(--afx-panel);
+	--navbar-bg: var(--afx-panel);
+	--highlight-color: var(--afx-sunk);
+	--sidebar-select-color: var(--afx-brand-050);
+	--input-disabled-bg: #202737;
+	--disabled-control-bg: #202737;
+
+	--border-color: var(--afx-line);
+	--dark-border-color: #2e3546;
+	--table-border-color: var(--afx-line);
+	--btn-group-border-color: var(--afx-line);
+
+	--primary: var(--afx-brand);
+	--primary-color: var(--afx-brand);
+	--brand-color: var(--afx-brand);
+	--border-primary: var(--afx-brand);
+	--btn-primary: var(--afx-brand);
+	--checkbox-color: var(--afx-brand);
+
+	--text-color: var(--afx-ink-h);
+	--heading-color: var(--afx-ink-h);
+	--text-neutral: var(--afx-ink-h);
+	--text-muted: var(--afx-ink-3);
+	--text-light: var(--afx-ink-4);
+	--disabled-text-color: var(--afx-ink-4);
+
+	--sidebar-hover-color: var(--afx-sunk);
+	--sidebar-active-color: var(--afx-brand-050);
+	--sidebar-border-color: var(--afx-line);
+	--divider-color: var(--afx-line-2);
+
+	--scrollbar-thumb-color: #3a4356;
+}
+
+[data-theme="dark"] .btn-default,
+[data-theme="dark"] .btn-secondary {
+	background: var(--afx-sunk);
+	border-color: var(--afx-line);
+	color: var(--afx-ink-2);
+}
+
+[data-theme="dark"] .btn-default:hover,
+[data-theme="dark"] .btn-secondary:hover {
+	background: #202737;
+	color: var(--afx-ink-h);
+}
+
+[data-theme="dark"] .btn-primary {
+	color: var(--afx-on-brand);
+}
+
+[data-theme="dark"] .form-control:focus {
+	box-shadow: 0 0 0 3px rgba(110, 134, 242, 0.18);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+	background: #3a4356;
+	background-clip: content-box;
+}

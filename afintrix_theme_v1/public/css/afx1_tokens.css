@@ -1,0 +1,293 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · TOKENS
+   Retints Frappe v16's espresso primitives to the Sapphire palette. Almost
+   every component in the desk reads these, so the bulk of the restyle is
+   done here rather than in per-component overrides.
+
+   Brand values are fixed by the Afintrix brief and are not altered.
+   ========================================================================== */
+
+:root,
+[data-theme="light"] {
+	/* ---- FIXED BRAND ---- */
+	--afx-brand: #1e39d6;
+	--afx-on-brand: #ffffff;
+	--afx-gold: #d5aa55;
+
+	/* ---- derived brand ---- */
+	--afx-brand-600: #3550e0;
+	--afx-brand-700: #182faf;
+	--afx-brand-800: #0f1f8a;
+	--afx-brand-050: #eef1fe;
+	--afx-brand-100: #dce2fc;
+	--afx-brand-200: #c0cbf8;
+	--afx-gold-ink: #8a6620;
+	--afx-gold-050: #fbf5e9;
+	--afx-gold-200: #efddb6;
+
+	/* ---- rail (module navigation) ---- */
+	--afx-rail: #0f1637;
+	--afx-rail-2: #1a2350;
+	--afx-rail-3: #243066;
+	--afx-rail-ink: #8e9ac8;
+	--afx-rail-ink-2: #ffffff;
+
+	/* ---- shell metrics ---- */
+	--afx-rail-w: 216px;
+	--afx-nav-w: 236px;
+	--afx-top-h: 56px;
+
+	/* ---- Sapphire surfaces ---- */
+	--afx-canvas: #eff2f7;
+	--afx-panel: #ffffff;
+	--afx-sunk: #f5f7fa;
+	--afx-line: #dfe4ec;
+	--afx-line-2: #eceff4;
+
+	/* ---- Sapphire ink ---- */
+	--afx-ink-h: #0b0f1c;
+	--afx-ink-2: #3a4356;
+	--afx-ink-3: #697488;
+	--afx-ink-4: #9aa4b6;
+
+	/* ---- elevation ---- */
+	--afx-sh-1: 0 1px 2px rgba(11, 15, 28, 0.05), 0 1px 3px rgba(11, 15, 28, 0.04);
+	--afx-sh-2: 0 2px 6px rgba(11, 15, 28, 0.06), 0 8px 20px rgba(11, 15, 28, 0.07);
+	--afx-sh-3: 0 18px 48px rgba(11, 15, 28, 0.2);
+
+	/* ---- typography ---- */
+	--afx-f-head: "Montserrat", "Segoe UI", system-ui, sans-serif;
+	--afx-f-body: "Poppins", "Segoe UI", system-ui, sans-serif;
+
+	/* ======================================================================
+	   Frappe primitives, retinted. Neutrals become cool and blue-biased so
+	   every surface frappe paints from --gray-* lands on the Sapphire canvas.
+	   ====================================================================== */
+	--gray-50: #f7f9fc;
+	--gray-100: #f1f4f9;
+	--gray-200: #e6eaf2;
+	--gray-300: #dfe4ec;
+	--gray-400: #c3cbd9;
+	--gray-500: #9aa4b6;
+	--gray-600: #7b8698;
+	--gray-700: #697488;
+	--gray-800: #3a4356;
+	--gray-900: #0b0f1c;
+
+	/* Blue is the brand: retint frappe's blue ramp so "info" reads as Afintrix. */
+	--blue-50: #f5f7fe;
+	--blue-100: #eef1fe;
+	--blue-200: #dce2fc;
+	--blue-300: #c0cbf8;
+	--blue-400: #7f92ee;
+	--blue-500: #3550e0;
+	--blue-600: #1e39d6;
+	--blue-700: #182faf;
+	--blue-800: #0f1f8a;
+	--blue-900: #0a1666;
+
+	/* Semantic colours from the Sapphire sheet. */
+	--green-50: #f2faf6;
+	--green-100: #e6f4ec;
+	--green-200: #d3ecdf;
+	--green-300: #bce0ce;
+	--green-400: #86c9aa;
+	--green-500: #2f9c6d;
+	--green-600: #158359;
+	--green-700: #0e7a4c;
+	--green-800: #0b6640;
+	--green-900: #084b30;
+
+	--red-50: #fdf6f5;
+	--red-100: #fceae8;
+	--red-200: #f7d5d1;
+	--red-300: #f2c9c5;
+	--red-400: #e08b83;
+	--red-500: #d34438;
+	--red-600: #c22a20;
+	--red-700: #a8231a;
+	--red-800: #8b1c15;
+	--red-900: #661410;
+
+	--amber-50: #fdf9f0;
+	--amber-100: #fdf4e4;
+	--amber-200: #f7e7c4;
+	--amber-300: #edd6a8;
+	--amber-400: #dfb463;
+	--amber-500: #c48a1c;
+	--amber-600: #a96a05;
+	--amber-700: #8a5604;
+	--amber-800: #6f4503;
+	--amber-900: #533302;
+
+	--yellow-50: #fdf9f0;
+	--yellow-100: #fdf4e4;
+	--yellow-200: #f7e7c4;
+	--yellow-300: #edd6a8;
+	--yellow-400: #dfb463;
+	--yellow-500: #c48a1c;
+	--yellow-600: #a96a05;
+	--yellow-700: #8a5604;
+	--yellow-800: #6f4503;
+	--yellow-900: #533302;
+
+	--orange-50: #fdf7f2;
+	--orange-100: #fbeee2;
+	--orange-200: #f5dcc4;
+	--orange-300: #eec6a2;
+	--orange-400: #e0a06a;
+	--orange-500: #cc722a;
+	--orange-600: #b45d18;
+	--orange-700: #954a11;
+	--orange-800: #75390d;
+	--orange-900: #562a0a;
+
+	--purple-50: #f8f5fd;
+	--purple-100: #f0ebfa;
+	--purple-200: #ded3f4;
+	--purple-300: #c7b6ea;
+	--purple-400: #a186d8;
+	--purple-500: #6e45b8;
+	--purple-600: #5e37a4;
+	--purple-700: #4e2d88;
+	--purple-800: #3d236b;
+	--purple-900: #2c194e;
+
+	--teal-50: #f2f9fa;
+	--teal-100: #e3f1f4;
+	--teal-200: #c6e2e8;
+	--teal-300: #9fcdd7;
+	--teal-400: #6cb0bf;
+	--teal-500: #2f7d8c;
+	--teal-600: #276b78;
+	--teal-700: #205864;
+	--teal-800: #19454f;
+	--teal-900: #12333a;
+
+	--cyan-50: #f1f8fb;
+	--cyan-100: #e0f0f7;
+	--cyan-200: #bfdfee;
+	--cyan-300: #94c9e0;
+	--cyan-400: #5fa9c9;
+	--cyan-500: #2f7d8c;
+	--cyan-600: #276b78;
+	--cyan-700: #205864;
+	--cyan-800: #19454f;
+	--cyan-900: #12333a;
+
+	/* ---- espresso semantic aliases ---- */
+	--outline-gray-1: #e6eaf2;
+	--outline-gray-2: #dfe4ec;
+	--outline-gray-3: #c3cbd9;
+	--outline-gray-4: #9aa4b6;
+	--outline-gray-5: #3a4356;
+	--outline-gray-modals: #e6eaf2;
+	--outline-blue-1: #c0cbf8;
+
+	--surface-gray-1: #f7f9fc;
+	--surface-gray-2: #f1f4f9;
+	--surface-gray-3: #e6eaf2;
+	--surface-gray-4: #dfe4ec;
+	--surface-gray-5: #697488;
+	--surface-gray-6: #3a4356;
+	--surface-gray-7: #0b0f1c;
+	--surface-menu-bar: #f7f9fc;
+	--surface-modal: #ffffff;
+	--surface-white: #ffffff;
+	--surface-blue-1: #f5f7fe;
+	--surface-blue-2: #eef1fe;
+	--surface-blue-3: #1e39d6;
+
+	--ink-gray-1: #e6eaf2;
+	--ink-gray-2: #dfe4ec;
+	--ink-gray-3: #c3cbd9;
+	--ink-gray-4: #9aa4b6;
+	--ink-gray-5: #7b8698;
+	--ink-gray-6: #697488;
+	--ink-gray-7: #697488;
+	--ink-gray-8: #3a4356;
+	--ink-gray-9: #0b0f1c;
+	--ink-blue-1: #f5f7fe;
+	--ink-blue-2: #3550e0;
+	--ink-blue-3: #1e39d6;
+
+	/* ---- layout ---- */
+	--bg-color: var(--afx-canvas);
+	--fg-color: var(--afx-panel);
+	--card-bg: var(--afx-panel);
+	--subtle-accent: var(--afx-sunk);
+	--subtle-fg: var(--afx-line-2);
+	--fg-hover-color: var(--afx-brand-050);
+	--control-bg: var(--afx-sunk);
+	--control-bg-on-gray: #eceff4;
+	--awesomebar-focus-bg: var(--afx-panel);
+	--modal-bg: var(--afx-panel);
+	--popover-bg: var(--afx-panel);
+	--navbar-bg: var(--afx-panel);
+	--highlight-color: var(--afx-sunk);
+	--sidebar-select-color: var(--afx-brand-050);
+
+	--border-color: var(--afx-line);
+	--dark-border-color: #d2d9e5;
+	--table-border-color: var(--afx-line);
+	--btn-group-border-color: var(--afx-line);
+
+	/* ---- brand ---- */
+	--primary: var(--afx-brand);
+	--primary-color: var(--afx-brand);
+	--brand-color: var(--afx-brand);
+	--border-primary: var(--afx-brand);
+	--btn-primary: var(--afx-brand);
+	--checkbox-color: var(--afx-brand);
+	--checkbox-gradient: linear-gradient(180deg, var(--afx-brand) -124.51%, var(--afx-brand) 100%);
+	--checkbox-focus-shadow: 0 0 0 2px var(--afx-brand-200);
+	--focus-blue: 0 0 0 2px var(--afx-brand-200);
+	--focus-default: 0 0 0 2px var(--afx-brand-200);
+
+	/* ---- text ---- */
+	--text-color: var(--afx-ink-h);
+	--heading-color: var(--afx-ink-h);
+	--text-neutral: var(--afx-ink-h);
+	--text-muted: var(--afx-ink-3);
+	--text-light: var(--afx-ink-4);
+	--disabled-text-color: var(--afx-ink-4);
+	--disabled-control-bg: var(--afx-sunk);
+	--input-disabled-bg: #eceff4;
+
+	/* ---- form ---- */
+	--border-radius-tiny: 5px;
+	--border-radius-sm: 8px;
+	--border-radius: 8px;
+	--border-radius-md: 8px;
+	--border-radius-lg: 12px;
+	--border-radius-xl: 14px;
+
+	--input-height: 32px;
+	--btn-height: 32px;
+	--navbar-height: 56px;
+	--page-max-width: 1180px;
+
+	/* ---- elevation ---- */
+	--shadow-xs: var(--afx-sh-1);
+	--shadow-sm: var(--afx-sh-1);
+	--shadow-base: var(--afx-sh-1);
+	--shadow-md: var(--afx-sh-2);
+	--shadow-lg: var(--afx-sh-2);
+	--shadow-xl: var(--afx-sh-2);
+	--shadow-2xl: var(--afx-sh-3);
+	--card-shadow: var(--afx-sh-1);
+	--modal-shadow: var(--afx-sh-3);
+	--btn-shadow: none;
+	--shadow-inset: inset 0 -1px 0 var(--afx-line);
+
+	/* ---- type ---- */
+	--font-stack: var(--afx-f-body);
+	--text-bold: 600;
+	--weight-regular: 400;
+	--weight-medium: 500;
+	--weight-semibold: 600;
+	--weight-bold: 700;
+
+	--scrollbar-thumb-color: #c3cbd9;
+	--scrollbar-track-color: transparent;
+}

@@ -1,0 +1,23 @@
+// Afintrix Theme V1 — Sapphire.
+//
+// The entry is .scss rather than .css because frappe's postcss plugin copies a
+// .css entry to a temp directory before resolving imports, which breaks
+// relative paths; a .scss entry is rendered by sass in place. Extension-less
+// paths make sass inline each file rather than emit a runtime @import.
+//
+// Order matters: tokens first, then the shell, then components, dark last.
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap");
+
+@import "../css/afx1_tokens";
+@import "../css/afx1_shell";
+@import "../css/afx1_page";
+@import "../css/afx1_controls";
+@import "../css/afx1_list";
+@import "../css/afx1_form";
+@import "../css/afx1_workspace";
+@import "../css/afx1_dark";
+
+@import "../css/afx1_desktop";
+@import "../css/afx1_about";
+@import "../css/afx1_charts";
+@import "../css/afx1_usermenu";

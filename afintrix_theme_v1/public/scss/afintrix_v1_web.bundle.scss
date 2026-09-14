@@ -1,0 +1,9 @@
+// Afintrix Theme V1 — website/portal bundle.
+//
+// frappe includes this on every web page, so everything it pulls in must be
+// scoped (afx1_login.css scopes under `.afx-login`, which afx1_login.js only
+// adds on the sign-in page). Fonts are loaded here because the desk bundle
+// that normally provides them is not present outside /app.
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600&display=swap");
+
+@import "../css/afx1_login";

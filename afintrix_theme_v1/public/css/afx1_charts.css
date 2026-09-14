@@ -1,0 +1,249 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · CHART & NUMBER CARDS
+
+   The card shell from the design: a hairline-bordered white panel, a 50px
+   header rule with a Montserrat title and a small grey caption, then a 16px
+   body. Series colours are handed to frappe-charts in afx1_charts.js — only
+   the chrome (axes, gridlines, legend, tooltip) is styled here.
+   ========================================================================== */
+
+/* ============================== CARD SHELL ============================== */
+
+.widget.dashboard-widget-box,
+.widget.chart-widget {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	padding: 0;
+	overflow: hidden;
+}
+
+.widget.dashboard-widget-box .widget-head,
+.widget.chart-widget .widget-head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 50px;
+	padding: 12px 16px;
+	margin: 0;
+	border-bottom: 1px solid var(--afx-line-2);
+}
+
+.widget.dashboard-widget-box .widget-head .widget-title,
+.widget.dashboard-widget-box .widget-head .chart-title,
+.widget.chart-widget .widget-head .widget-title {
+	font-family: var(--afx-f-head);
+	font-weight: 600;
+	font-size: 13.5px;
+	letter-spacing: -0.008em;
+	color: var(--afx-ink-h);
+	margin: 0;
+}
+
+.widget.dashboard-widget-box .widget-head .widget-subtitle,
+.widget.dashboard-widget-box .chart-timespan,
+.widget.dashboard-widget-box .filter-chart {
+	font-size: 11px;
+	color: var(--afx-ink-4);
+}
+
+.widget.dashboard-widget-box .widget-control,
+.widget.chart-widget .widget-control {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.widget.dashboard-widget-box .widget-body,
+.widget.chart-widget .widget-body {
+	padding: 16px;
+}
+
+/* ============================== CHART BODY ============================== */
+
+.chart-container .frappe-chart,
+.chart-container svg.chart {
+	font-family: var(--afx-f-body);
+}
+
+/* gridlines and the baseline */
+.frappe-chart .y.axis .line-vertical,
+.frappe-chart .x.axis .line-vertical,
+.frappe-chart line.line-vertical,
+.frappe-chart .axis line {
+	stroke: var(--afx-line-2);
+}
+
+.frappe-chart .y-axis-guide,
+.frappe-chart .chart-label-group line {
+	stroke: var(--afx-line-2);
+}
+
+/* axis text: values quieter than labels, both tabular */
+.frappe-chart .axis text,
+.frappe-chart .chart-label,
+.frappe-chart text.y-value-text,
+.frappe-chart text.x-value-text {
+	font-family: var(--afx-f-body);
+	font-size: 9.5px;
+	fill: var(--afx-ink-4);
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+.frappe-chart .x.axis text {
+	fill: var(--afx-ink-3);
+}
+
+/* value labels sitting on the marks */
+.frappe-chart .data-point-value,
+.frappe-chart .chart-data-label {
+	font-size: 10px;
+	font-weight: 600;
+	fill: var(--afx-ink-h);
+	font-variant-numeric: tabular-nums;
+}
+
+/* legend */
+.frappe-chart .chart-legend text,
+.chart-container .legend-dataset-label {
+	font-family: var(--afx-f-body);
+	font-size: 11.5px;
+	fill: var(--afx-ink-2);
+}
+
+.chart-container .legend-dataset-value {
+	font-weight: 600;
+	fill: var(--afx-ink-h);
+}
+
+.frappe-chart .legend-dot {
+	rx: 3;
+	ry: 3;
+}
+
+/* tooltip */
+.graph-svg-tip {
+	background: var(--afx-rail);
+	border-radius: 8px;
+	box-shadow: var(--afx-sh-2);
+	font-family: var(--afx-f-body);
+	font-size: 11.5px;
+	padding: 8px 10px;
+}
+
+.graph-svg-tip .title {
+	font-size: 10.5px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--afx-rail-ink);
+}
+
+.graph-svg-tip .data-point-list li {
+	font-variant-numeric: tabular-nums;
+	color: #fff;
+}
+
+.graph-svg-tip .svg-pointer {
+	fill: var(--afx-rail);
+}
+
+/* donut / pie hole label */
+.frappe-chart .donut-hole-text,
+.frappe-chart .pie-center-label {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	fill: var(--afx-ink-h);
+}
+
+/* ============================= NUMBER CARDS ============================= */
+
+.widget.number-widget-box {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	padding: 15px 16px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* the design marks the lead card with a brand rule across the top */
+.widget.number-widget-box::after {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto 0;
+	height: 3px;
+	background: var(--afx-brand);
+	opacity: 0;
+	transition: opacity 0.15s ease;
+}
+
+.widget.number-widget-box:hover::after {
+	opacity: 1;
+}
+
+.widget.number-widget-box .widget-head {
+	border: 0;
+	padding: 0;
+	min-height: 0;
+	margin-bottom: 9px;
+}
+
+.widget.number-widget-box .widget-head .widget-title,
+.widget.number-widget-box .widget-label .ellipsis {
+	font-family: var(--afx-f-body);
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--afx-ink-3);
+}
+
+.widget.number-widget-box .widget-body {
+	padding: 0;
+}
+
+.widget.number-widget-box .widget-content .number {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 1.1;
+	letter-spacing: -0.022em;
+	color: var(--afx-ink-h);
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+.widget.number-widget-box .card-stats,
+.widget.number-widget-box .widget-content .percentage-stat-area {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 7px;
+	font-size: 11.5px;
+	color: var(--afx-ink-3);
+	font-variant-numeric: tabular-nums;
+}
+
+.widget.number-widget-box .green-stat,
+.widget.number-widget-box .text-success {
+	color: var(--pos, var(--green-700));
+	font-weight: 600;
+}
+
+.widget.number-widget-box .red-stat,
+.widget.number-widget-box .text-danger {
+	color: var(--red-600);
+	font-weight: 600;
+}
+
+/* ======================== REPORT CHART (query report) ======================== */
+
+.report-wrapper .chart-container,
+.query-report-chart .chart-container {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	padding: 16px;
+	margin-bottom: 14px;
+}

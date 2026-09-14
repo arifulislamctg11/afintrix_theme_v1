@@ -1,0 +1,207 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · FORM
+   Sections become soft-elevated white cards on the canvas, section heads
+   carry a small numeral-free label, and the form sidebar becomes Sapphire's
+   summary rail.
+   ========================================================================== */
+
+/* ============================== SECTIONS ============================== */
+
+.form-layout .form-page,
+.std-form-layout > .form-layout > .form-page {
+	background: transparent;
+}
+
+.form-section,
+.form-dashboard-section,
+.form-section.card-section {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	padding: 4px 18px 14px;
+	margin-bottom: 14px;
+}
+
+.form-section.hide-border,
+.form-section.empty-section {
+	box-shadow: none;
+	border-color: transparent;
+	background: transparent;
+}
+
+.form-section .section-head {
+	font-family: var(--afx-f-head);
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--afx-ink-h);
+	letter-spacing: -0.005em;
+	padding: 14px 0 4px;
+	text-transform: none;
+}
+
+.form-section .section-head.collapsible {
+	border-radius: 8px;
+}
+
+.form-section .form-section-description {
+	font-size: 11.5px;
+	color: var(--afx-ink-3);
+}
+
+.form-column .column-label {
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--afx-ink-4);
+}
+
+/* ============================ FORM HEADING ============================ */
+
+.form-message,
+.form-message.blue {
+	border-radius: 10px;
+	border: 1px solid var(--afx-brand-200);
+	background: var(--afx-brand-050);
+	color: var(--afx-brand-700);
+	font-size: 12.5px;
+}
+
+.form-message.red {
+	border-color: var(--red-300);
+	background: var(--red-100);
+	color: var(--red-700);
+}
+
+.form-message.yellow,
+.form-message.orange {
+	border-color: var(--amber-300);
+	background: var(--amber-100);
+	color: var(--amber-700);
+}
+
+/* ========================== DASHBOARD / LINKS ========================== */
+
+.form-dashboard-wrapper,
+.form-links {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+}
+
+.form-links .form-link-title,
+.form-dashboard-section .section-head {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	color: var(--afx-ink-h);
+}
+
+.document-link .badge-link,
+.document-link-badge {
+	border-radius: 999px;
+	border: 1px solid var(--afx-line);
+	background: var(--afx-sunk);
+	font-size: 11.5px;
+	color: var(--afx-ink-2);
+}
+
+/* ============================ FORM SIDEBAR ============================ */
+
+.form-sidebar,
+.layout-side-section .form-sidebar {
+	font-size: 12.5px;
+}
+
+.form-sidebar .sidebar-label {
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--afx-ink-4);
+}
+
+.form-sidebar .sidebar-menu-item,
+.form-sidebar .sidebar-section {
+	border-radius: 8px;
+}
+
+/* =============================== GRIDS =============================== */
+
+.grid-heading-row,
+.form-grid .grid-heading-row {
+	background: var(--afx-sunk);
+	border-color: var(--afx-line);
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--afx-ink-3);
+}
+
+.form-grid,
+.form-grid-container {
+	border: 1px solid var(--afx-line);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.grid-row,
+.form-grid .grid-row {
+	border-color: var(--afx-line-2);
+	font-size: 12.5px;
+}
+
+.grid-row:hover {
+	background: var(--afx-sunk);
+}
+
+.grid-footer,
+.grid-buttons {
+	background: var(--afx-sunk);
+	border-top: 1px solid var(--afx-line);
+}
+
+.grid-static-col,
+.grid-row .col {
+	color: var(--afx-ink-2);
+}
+
+/* =============================== TIMELINE =============================== */
+
+.new-timeline,
+.timeline-items {
+	font-size: 12.5px;
+}
+
+.timeline-content,
+.comment-content {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 10px;
+	box-shadow: var(--afx-sh-1);
+}
+
+.timeline-badge,
+.timeline-dot {
+	background: var(--afx-panel);
+	border-color: var(--afx-line);
+}
+
+.comment-box {
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	background: var(--afx-panel);
+}
+
+/* ============================ FRAPPE CARDS ============================ */
+
+.frappe-card,
+.widget {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+}

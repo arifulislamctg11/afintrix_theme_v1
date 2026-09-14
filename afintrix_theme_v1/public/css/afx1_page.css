@@ -1,0 +1,203 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · PAGE HEAD
+   Sapphire's header: a small breadcrumb trail, the page name set large in
+   Montserrat, a description line, and the actions ranged right.
+   ========================================================================== */
+
+.page-head .container,
+.page-body .container {
+	max-width: none;
+	padding-left: 22px;
+	padding-right: 22px;
+}
+
+.page-head .page-head-content {
+	padding: 14px 0 12px;
+}
+
+.page-head .row {
+	align-items: flex-start;
+}
+
+/* Breadcrumbs carry the page title in v16, so the trail stays small and grey
+   and the last crumb is set as Sapphire's page heading. frappe draws the
+   separator on `a::before`, so restyle that rather than adding a second one. */
+.navbar-breadcrumbs {
+	align-items: baseline;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-breadcrumbs > li {
+	display: flex;
+	align-items: baseline;
+}
+
+.navbar-breadcrumbs a {
+	color: var(--afx-ink-3);
+	font-size: 12.5px;
+	font-weight: 500;
+}
+
+.navbar-breadcrumbs a:hover {
+	color: var(--afx-brand);
+	text-decoration: none;
+}
+
+.navbar-breadcrumbs a::before {
+	color: var(--afx-ink-4);
+	font-size: 12px;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.navbar-breadcrumbs > li:last-child > a {
+	font-family: var(--afx-f-head);
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.015em;
+	color: var(--afx-ink-h) !important;
+	cursor: default;
+}
+
+.navbar-breadcrumbs > li:last-child > a:hover {
+	color: var(--afx-ink-h) !important;
+}
+
+.navbar-breadcrumbs > li:first-child .icon {
+	color: var(--afx-ink-4);
+}
+
+.page-title .title-area {
+	align-items: baseline;
+	gap: 10px;
+	min-width: 0;
+}
+
+.page-title .title-area .sub-heading {
+	font-size: 12.5px;
+	color: var(--afx-ink-3);
+	margin-top: 3px;
+}
+
+.page-title .sidebar-toggle-btn {
+	color: var(--afx-ink-3);
+	border-radius: 8px;
+}
+
+.page-title .sidebar-toggle-btn:hover {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+/* the doc-status pill next to the title */
+.page-indicator-pill,
+.indicator-pill {
+	border-radius: 999px;
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 3px 9px;
+	border: 1px solid transparent;
+}
+
+.indicator-pill.green,
+.indicator-pill.darkgrey.green {
+	background: var(--green-100);
+	color: var(--green-700);
+	border-color: var(--green-300);
+}
+
+.indicator-pill.red {
+	background: var(--red-100);
+	color: var(--red-600);
+	border-color: var(--red-300);
+}
+
+.indicator-pill.orange,
+.indicator-pill.yellow {
+	background: var(--amber-100);
+	color: var(--amber-600);
+	border-color: var(--amber-300);
+}
+
+.indicator-pill.blue {
+	background: var(--afx-brand-050);
+	color: var(--afx-brand-700);
+	border-color: var(--afx-brand-200);
+}
+
+.indicator-pill.gray,
+.indicator-pill.grey,
+.indicator-pill.darkgrey {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-3);
+	border-color: var(--afx-line);
+}
+
+/* actions */
+.page-actions {
+	gap: 8px;
+	padding-top: 2px;
+}
+
+.page-actions .btn {
+	height: 32px;
+}
+
+.page-actions .standard-actions {
+	gap: 8px;
+}
+
+/* the list-view / report filter row */
+.page-form {
+	background: transparent;
+	border: 0;
+	padding: 0 0 10px;
+	gap: 8px;
+}
+
+/* ================================ TABS ================================ */
+
+/* frappe styles these at .form-tabs-list .form-tabs .nav-item .nav-link, so the
+   overrides below have to match that depth to win. */
+.form-tabs-list,
+.list-tabs-list {
+	background-color: var(--afx-canvas);
+	border-bottom: 1px solid var(--afx-line);
+	border-radius: 0;
+	padding: 0;
+}
+
+.form-tabs-list .form-tabs .nav-item .nav-link,
+.form-tabs-list .nav-link,
+.nav-tabs .nav-link {
+	border: 0;
+	border-bottom: 2px solid transparent;
+	border-radius: 0;
+	padding: 9px 2px;
+	margin: 0 22px 0 0;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--afx-ink-3);
+	background-color: transparent;
+}
+
+.form-tabs-list .form-tabs .nav-item .nav-link:hover,
+.form-tabs-list .nav-link:hover,
+.nav-tabs .nav-link:hover {
+	color: var(--afx-ink-h);
+	border-bottom-color: var(--afx-line);
+	background-color: transparent;
+}
+
+.form-tabs-list .form-tabs .nav-item .nav-link.active,
+.form-tabs-list .nav-link.active,
+.nav-tabs .nav-link.active {
+	color: var(--afx-brand);
+	font-weight: 600;
+	border-bottom-color: var(--afx-brand);
+	background-color: transparent;
+}

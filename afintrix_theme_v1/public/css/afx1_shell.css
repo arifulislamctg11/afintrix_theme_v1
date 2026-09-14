@@ -1,0 +1,591 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · SHELL
+   Dual-tier navigation: a 64px dark icon rail carries modules, the native
+   v16 sidebar becomes the 236px contextual panel, and a sticky top bar
+   carries search, notifications and the user menu.
+   ========================================================================== */
+
+body {
+	background: var(--afx-canvas);
+	font-family: var(--afx-f-body);
+	font-size: 13.5px;
+	-webkit-font-smoothing: antialiased;
+	font-variant-numeric: lining-nums;
+}
+
+h1, h2, h3, h4, h5, h6,
+.page-title .title-text,
+.frappe-card .card-title {
+	font-family: var(--afx-f-head);
+	letter-spacing: -0.01em;
+}
+
+/* ============================ MODULE RAIL ============================ */
+
+/* The rail carries the module name next to its icon, not the icon alone, so
+   the modules are readable without hovering. Width lives in --afx-rail-w,
+   which the flyout also offsets against — widening one moves the other. */
+
+.afx-rail {
+	flex: 0 0 var(--afx-rail-w);
+	width: var(--afx-rail-w);
+	height: 100vh;
+	position: sticky;
+	top: 0;
+	z-index: 1022;
+	background: var(--afx-rail);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	padding: 12px 10px;
+	gap: 2px;
+}
+
+.afx-rail-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex: none;
+	margin-bottom: 14px;
+	padding: 0 4px;
+	text-decoration: none;
+	min-width: 0;
+}
+
+/* The brand symbol is blue with a gold swoosh, which would sink into the dark
+   rail, so it gets a white tile. Contain, not cover: the mark must not crop. */
+.afx-rail-brand-tile {
+	width: 34px;
+	height: 34px;
+	border-radius: 9px;
+	background: #ffffff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	display: grid;
+	place-items: center;
+	flex: none;
+	padding: 4px;
+	overflow: hidden;
+}
+
+.afx-rail-brand-tile img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.afx-rail-brand-name {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: -0.01em;
+	color: var(--afx-rail-ink-2);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.afx-rail-brand:hover {
+	text-decoration: none;
+}
+
+.afx-rail-items {
+	flex: 1 1 auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 1px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-width: thin;
+	scrollbar-color: var(--afx-rail-3) transparent;
+}
+
+.afx-rail-items::-webkit-scrollbar {
+	width: 6px;
+}
+
+.afx-rail-items::-webkit-scrollbar-thumb {
+	background: var(--afx-rail-3);
+	border-radius: 99px;
+}
+
+.afx-rail-items::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.afx-rail-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 38px;
+	flex: none;
+	padding: 0 10px;
+	border-radius: 8px;
+	color: var(--afx-rail-ink);
+	background: none;
+	border: 0;
+	cursor: pointer;
+	text-decoration: none;
+	min-width: 0;
+	transition: background 0.12s ease, color 0.12s ease;
+}
+
+.afx-rail-item:hover {
+	background: var(--afx-rail-2);
+	color: var(--afx-rail-ink-2);
+	text-decoration: none;
+}
+
+.afx-rail-item.active {
+	background: var(--afx-rail-3);
+	color: var(--afx-rail-ink-2);
+}
+
+.afx-rail-item.active::before {
+	content: "";
+	position: absolute;
+	left: -10px;
+	top: 6px;
+	bottom: 6px;
+	width: 3px;
+	border-radius: 0 3px 3px 0;
+	background: var(--afx-gold);
+}
+
+/* frappe centres .icon with `margin: 0 auto`, which in a flex row eats the
+   free space and shunts the label to the far edge. */
+.afx-rail-item .icon,
+.afx-rail-item svg {
+	width: 17px;
+	height: 17px;
+	flex: none;
+	margin: 0;
+	stroke: currentColor;
+	fill: none;
+}
+
+.afx-rail-label {
+	flex: 1 1 auto;
+	text-align: left;
+	font-size: 12.5px;
+	font-weight: 500;
+	line-height: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+
+.afx-rail-item.active .afx-rail-label {
+	font-weight: 600;
+}
+
+/* ===================== CONTEXTUAL PANEL (FLYOUT) ===================== */
+
+/* The panel is no longer docked. It is a popover anchored to whichever rail
+   icon was clicked, so the content area keeps the full width and the submenu
+   reads as opening out of that icon. afx1_shell.js sets --afx-flyout-top from
+   the icon's position and toggles .afx-flyout-open on <html>. */
+
+:root {
+	--sidebar-width: var(--afx-nav-w);
+	--sidebar-hover-color: var(--afx-sunk);
+	--sidebar-active-color: var(--afx-brand-050);
+	--sidebar-border-color: var(--afx-line);
+	--divider-color: var(--afx-line-2);
+	--afx-flyout-top: 64px;
+}
+
+.body-sidebar-container,
+.body-sidebar-container.expanded {
+	position: fixed;
+	left: var(--afx-rail-w);
+	top: 0;
+	height: 100vh;
+	width: 0;
+	z-index: 1021;
+	pointer-events: none;
+}
+
+/* frappe reserves flow width with the placeholder; the flyout must not. */
+.body-sidebar-container .body-sidebar-placeholder,
+.body-sidebar-container.expanded .body-sidebar-placeholder {
+	display: none !important;
+	width: 0 !important;
+}
+
+.body-sidebar,
+.body-sidebar-container.expanded .body-sidebar {
+	position: absolute;
+	left: 8px;
+	top: var(--afx-flyout-top);
+	width: var(--afx-nav-w);
+	height: auto;
+	max-height: calc(100vh - var(--afx-flyout-top) - 14px);
+	overflow-y: auto;
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-2);
+	padding: 8px;
+	gap: 6px;
+	opacity: 0;
+	transform: translateX(-6px);
+	pointer-events: none;
+	transition: opacity 0.13s ease, transform 0.13s ease;
+}
+
+html.afx-flyout-open .body-sidebar-container {
+	pointer-events: auto;
+}
+
+/* frappe puts .expanded on the container, and that selector is more specific
+   than the hidden state above, so the open state has to match it too. */
+html.afx-flyout-open .body-sidebar,
+html.afx-flyout-open .body-sidebar-container .body-sidebar,
+html.afx-flyout-open .body-sidebar-container.expanded .body-sidebar {
+	opacity: 1;
+	transform: none;
+	pointer-events: auto;
+}
+
+/* frappe's own collapse affordances have no meaning for a popover */
+.body-sidebar .collapse-sidebar-link,
+.body-sidebar .sidebar-resize-handle,
+.body-sidebar .body-sidebar-cards {
+	display: none !important;
+}
+
+/* the module title block is the stock ERPNext-looking header — removed */
+.body-sidebar .sidebar-header {
+	display: none !important;
+}
+
+/* search / notifications / user live in the top bar, not the popover */
+.body-sidebar .standard-items-sections:empty,
+.body-sidebar .body-sidebar-bottom {
+	display: none;
+}
+
+.body-sidebar .body-sidebar-top {
+	overflow: visible;
+	gap: 1px;
+}
+
+/* search + notifications strip */
+.body-sidebar .standard-items-sections {
+	padding-top: 2px;
+}
+
+/* nav rows */
+.body-sidebar .standard-sidebar-item .item-anchor {
+	height: 34px;
+	padding: 0 8px 0 6px;
+	border-radius: 7px;
+	color: var(--afx-ink-2);
+	font-size: 13px;
+}
+
+.body-sidebar .standard-sidebar-item .sidebar-item-label {
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.body-sidebar .standard-sidebar-item .item-anchor .sidebar-item-icon {
+	padding: 6px;
+	color: var(--afx-ink-3);
+}
+
+.body-sidebar .standard-sidebar-item:not(.active-sidebar):has(a:not(.section-break)):hover {
+	background: transparent;
+}
+
+.body-sidebar .standard-sidebar-item:not(.active-sidebar):has(a:not(.section-break)):hover .item-anchor {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+.body-sidebar .active-sidebar,
+.body-sidebar .standard-sidebar-item.active-sidebar {
+	background: transparent;
+	box-shadow: none;
+}
+
+.body-sidebar .active-sidebar > .item-anchor,
+.body-sidebar .active-sidebar .item-anchor {
+	background: var(--afx-brand-050);
+	color: var(--afx-brand-700);
+	font-weight: 600;
+}
+
+.body-sidebar .active-sidebar .item-anchor .sidebar-item-icon {
+	color: var(--afx-brand);
+}
+
+/* section headings inside the panel read as Sapphire's group labels */
+.body-sidebar .section-break .sidebar-item-label,
+.body-sidebar .standard-sidebar-item .item-anchor.section-break .sidebar-item-label {
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+	font-size: 10.5px;
+	font-weight: 600;
+	color: var(--afx-ink-4);
+}
+
+.body-sidebar .sidebar-item-suffix .keyboard-shortcut {
+	font-size: 10.5px;
+	color: var(--afx-ink-4);
+	background: var(--afx-sunk);
+	border: 1px solid var(--afx-line);
+	border-radius: 5px;
+	padding: 1px 5px;
+}
+
+/* user block at the foot of the panel */
+.body-sidebar .dropdown-navbar-user .sidebar-user-button {
+	border-radius: 8px;
+	padding: 6px;
+}
+
+.body-sidebar .dropdown-navbar-user .sidebar-user-button:hover {
+	background: var(--afx-sunk);
+}
+
+.body-sidebar .sidebar-toggle-btn {
+	border-color: var(--afx-line);
+	background: var(--afx-panel);
+	box-shadow: var(--afx-sh-1);
+}
+
+/* ============================== TOP BAR ============================== */
+
+.afx-topbar {
+	position: sticky;
+	top: 0;
+	z-index: 7;
+	height: var(--afx-top-h);
+	flex: none;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0 18px;
+	background: var(--afx-panel);
+	border-bottom: 1px solid var(--afx-line);
+}
+
+.afx-topbar-left {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: none;
+}
+
+.afx-topbar-spacer {
+	flex: 1 1 auto;
+}
+
+.afx-topbar-right {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex: none;
+}
+
+.afx-topbar-btn {
+	width: 32px;
+	height: 32px;
+	display: grid;
+	place-items: center;
+	border: 0;
+	background: none;
+	border-radius: 8px;
+	color: var(--afx-ink-3);
+	cursor: pointer;
+	padding: 0;
+}
+
+.afx-topbar-btn:hover {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+.afx-topbar-btn .icon,
+.afx-topbar-btn svg {
+	width: 17px;
+	height: 17px;
+	stroke: currentColor;
+	fill: none;
+}
+
+/* frappe's search + notification block, relocated whole so the notification
+   dropdown keeps the ancestor it is positioned against */
+.afx-topbar .standard-items-sections {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0;
+}
+
+.afx-topbar .standard-items-sections > .dropdown-notifications {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.afx-topbar .sidebar-notification {
+	flex: none;
+}
+
+/* the moved rows lose the .body-sidebar layout rules, so restate them here */
+.afx-topbar .standard-sidebar-item {
+	display: flex;
+	width: 100%;
+	margin: 0;
+	position: relative;
+}
+
+.afx-topbar .item-anchor {
+	display: flex;
+	flex: 1 1 auto;
+	align-items: center;
+	gap: 4px;
+	text-decoration: none;
+	min-width: 0;
+}
+
+.afx-topbar .sidebar-item-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.afx-topbar .sidebar-item-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.afx-topbar .sidebar-child-item,
+.afx-topbar .sidebar-item-control,
+.afx-topbar .sidebar-item-edit-controls {
+	display: none;
+}
+
+/* frappe's es-icons are filled, not stroked */
+.afx-topbar .es-icon,
+.afx-topbar-btn .es-icon {
+	fill: currentColor;
+	stroke: none;
+}
+
+/* the native search row, relocated into the bar and restyled as a command box */
+.afx-topbar .navbar-search-bar {
+	flex: 0 1 420px;
+	min-width: 200px;
+	margin: 0 auto;
+}
+
+.afx-topbar .navbar-search-bar .standard-sidebar-item {
+	margin: 0;
+}
+
+.afx-topbar .navbar-search-bar .item-anchor {
+	height: 34px;
+	border-radius: 8px;
+	background: var(--afx-sunk);
+	border: 1px solid var(--afx-line);
+	padding: 0 8px 0 6px;
+	color: var(--afx-ink-4);
+	gap: 4px;
+}
+
+.afx-topbar .navbar-search-bar .item-anchor:hover {
+	background: var(--afx-panel);
+	border-color: var(--afx-brand-200);
+	text-decoration: none;
+}
+
+.afx-topbar .navbar-search-bar .sidebar-item-label {
+	font-size: 12.5px;
+	color: var(--afx-ink-4);
+	font-weight: 400;
+}
+
+/* notifications, relocated */
+.afx-topbar .sidebar-notification .item-anchor {
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	justify-content: center;
+	border-radius: 8px;
+	color: var(--afx-ink-3);
+}
+
+.afx-topbar .sidebar-notification .item-anchor:hover {
+	background: var(--afx-sunk);
+}
+
+.afx-topbar .sidebar-notification .sidebar-item-label,
+.afx-topbar .sidebar-notification .sidebar-item-suffix {
+	display: none;
+}
+
+.afx-topbar .sidebar-notification .sidebar-item-icon {
+	padding: 0;
+}
+
+.afx-topbar .dropdown-notifications .notifications-list {
+	left: auto;
+	right: 0;
+	top: 40px;
+}
+
+/* user menu, relocated */
+.afx-topbar .dropdown-navbar-user {
+	margin: 0 0 0 4px !important;
+}
+
+.afx-topbar .dropdown-navbar-user .sidebar-user-button {
+	width: auto !important;
+	min-height: 32px !important;
+	padding: 0;
+	border-radius: 999px;
+}
+
+.afx-topbar .dropdown-navbar-user .avatar-name-email {
+	display: none;
+}
+
+/* =========================== MAIN SECTION =========================== */
+
+.main-section {
+	display: flex;
+	flex-direction: column;
+	background: var(--afx-canvas);
+}
+
+.main-section > header,
+.main-section > footer {
+	flex: none;
+}
+
+/* page-head stacks directly under the sticky top bar */
+.page-head {
+	top: var(--afx-top-h) !important;
+	background: var(--afx-canvas);
+	border-bottom: 1px solid var(--afx-line);
+}
+
+@media (max-width: 767px) {
+	.afx-rail {
+		display: none;
+	}
+	.afx-topbar .navbar-search-bar {
+		flex: 1 1 auto;
+	}
+}

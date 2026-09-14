@@ -1,0 +1,116 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · USER MENU
+   The avatar dropdown built by afx1_usermenu.js. v16 has no such menu of its
+   own, and the stock Logout lived in the apps-grid navbar this theme removes.
+   ========================================================================== */
+
+.afx-topbar .dropdown-navbar-user {
+	position: relative;
+}
+
+.afx-user-menu {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 8px);
+	min-width: 216px;
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 10px;
+	box-shadow: var(--afx-sh-2);
+	padding: 5px;
+	z-index: 1030;
+	opacity: 0;
+	transform: translateY(-4px);
+	pointer-events: none;
+	transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+html.afx-user-menu-open .afx-user-menu {
+	opacity: 1;
+	transform: none;
+	pointer-events: auto;
+}
+
+.afx-user-menu-head {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	padding: 8px 9px 10px;
+	margin-bottom: 4px;
+	border-bottom: 1px solid var(--afx-line-2);
+}
+
+.afx-user-menu-name {
+	font-family: var(--afx-f-head);
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--afx-ink-h);
+}
+
+.afx-user-menu-email {
+	font-size: 11px;
+	color: var(--afx-ink-4);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.afx-user-menu-item {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	width: 100%;
+	border: 0;
+	background: none;
+	border-radius: 6px;
+	padding: 7px 9px;
+	font-family: var(--afx-f-body);
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+	cursor: pointer;
+	text-align: left;
+	justify-content: flex-start;
+}
+
+/* the label must own the free space, or inherited desk rules push it right */
+.afx-user-menu-item > span {
+	flex: 1 1 auto;
+	text-align: left;
+}
+
+.afx-user-menu-item:hover {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+.afx-user-menu-item .icon {
+	width: 15px;
+	height: 15px;
+	stroke: currentColor;
+	fill: none;
+	flex: none;
+	color: var(--afx-ink-4);
+}
+
+.afx-user-menu-item:hover .icon {
+	color: var(--afx-ink-3);
+}
+
+.afx-user-menu-item.danger {
+	color: var(--red-600);
+}
+
+.afx-user-menu-item.danger:hover {
+	background: var(--red-100);
+	color: var(--red-700);
+}
+
+.afx-user-menu-item.danger .icon,
+.afx-user-menu-item.danger:hover .icon {
+	color: currentColor;
+}
+
+.afx-user-menu-sep {
+	height: 1px;
+	background: var(--afx-line-2);
+	margin: 4px 0;
+}

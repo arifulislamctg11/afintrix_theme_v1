@@ -1,0 +1,335 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · CONTROLS
+   Buttons, inputs, selects, checkboxes, dropdowns, modals and toasts.
+   ========================================================================== */
+
+/* =============================== BUTTONS =============================== */
+
+.btn {
+	font-family: var(--afx-f-body);
+	font-size: 12.5px;
+	font-weight: 500;
+	border-radius: 8px;
+	box-shadow: none;
+	transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.btn:focus,
+.btn:focus-visible {
+	box-shadow: 0 0 0 2px var(--afx-brand-200);
+	outline: none;
+}
+
+.btn-primary,
+.btn.btn-primary {
+	background: var(--afx-brand);
+	border: 1px solid var(--afx-brand);
+	color: var(--afx-on-brand);
+	font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active {
+	background: var(--afx-brand-700);
+	border-color: var(--afx-brand-700);
+	color: var(--afx-on-brand);
+}
+
+.btn-default,
+.btn-secondary,
+.btn.btn-default {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	color: var(--afx-ink-2);
+	box-shadow: var(--afx-sh-1);
+}
+
+.btn-default:hover,
+.btn-secondary:hover {
+	background: var(--afx-sunk);
+	border-color: #d2d9e5;
+	color: var(--afx-ink-h);
+}
+
+.btn-danger {
+	background: var(--red-600);
+	border: 1px solid var(--red-600);
+	color: #fff;
+}
+
+.btn-danger:hover {
+	background: var(--red-700);
+	border-color: var(--red-700);
+}
+
+.btn-outline,
+.btn-outline-primary {
+	background: transparent;
+	border: 1px solid var(--afx-brand);
+	color: var(--afx-brand);
+}
+
+.btn-outline:hover,
+.btn-outline-primary:hover {
+	background: var(--afx-brand-050);
+	color: var(--afx-brand-700);
+}
+
+.btn-sm {
+	height: 30px;
+	padding: 0 11px;
+	font-size: 12px;
+}
+
+.btn-xs {
+	height: 26px;
+	padding: 0 9px;
+	font-size: 11.5px;
+	border-radius: 6px;
+}
+
+/* icon-only buttons keep a square footprint */
+.btn.icon-btn,
+.page-icon-group .btn {
+	width: 32px;
+	padding: 0;
+	display: inline-grid;
+	place-items: center;
+}
+
+/* ================================ INPUTS ================================ */
+
+.form-control:not([type="checkbox"]):not([type="radio"]),
+.input-with-feedback:not([type="checkbox"]):not([type="radio"]),
+select.form-control,
+textarea.form-control {
+	height: var(--input-height);
+	min-height: var(--input-height);
+	background: var(--afx-sunk);
+	border: 1px solid var(--afx-line);
+	border-radius: 8px;
+	font-size: 13px;
+	color: var(--afx-ink-h);
+	padding: 0 10px;
+	box-shadow: none;
+	transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+textarea.form-control {
+	height: auto;
+	padding: 8px 10px;
+	line-height: 1.55;
+}
+
+.form-control::placeholder {
+	color: var(--afx-ink-4);
+}
+
+.form-control:hover:not(:disabled):not([readonly]) {
+	border-color: #d2d9e5;
+}
+
+.form-control:focus {
+	background: var(--afx-panel);
+	border-color: var(--afx-brand);
+	box-shadow: 0 0 0 3px var(--afx-brand-050);
+	outline: none;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background: #eceff4;
+	color: var(--afx-ink-3);
+	border-color: var(--afx-line-2);
+}
+
+.control-label {
+	font-size: 11.5px;
+	font-weight: 600;
+	color: var(--afx-ink-2);
+	letter-spacing: 0.005em;
+	margin-bottom: 5px;
+}
+
+.control-value {
+	font-size: 13px;
+	color: var(--afx-ink-h);
+}
+
+.help-box,
+.help-box-under-hr {
+	font-size: 11.5px;
+	color: var(--afx-ink-3);
+}
+
+.has-error .form-control,
+.form-control.invalid {
+	border-color: var(--red-500);
+	background: var(--red-50);
+}
+
+/* link fields keep the brand colour */
+.control-input a,
+.like-disabled-input a,
+.frappe-control a[data-fieldtype] {
+	color: var(--afx-brand);
+}
+
+/* ============================== CHECKBOXES ============================== */
+
+.checkbox .label-area,
+.frappe-checkbox {
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+}
+
+input[type="checkbox"] {
+	border-radius: 4px;
+	border-color: var(--afx-line);
+}
+
+input[type="checkbox"]:checked {
+	background-color: var(--afx-brand);
+	border-color: var(--afx-brand);
+}
+
+/* =============================== SELECTS =============================== */
+
+select.form-control {
+	padding-right: 26px;
+	appearance: none;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'><path d='M1 1l4 4 4-4' stroke='%23697488' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+}
+
+/* ============================== DROPDOWNS ============================== */
+
+.dropdown-menu {
+	border: 1px solid var(--afx-line);
+	border-radius: 10px;
+	box-shadow: var(--afx-sh-2);
+	padding: 5px;
+	background: var(--afx-panel);
+}
+
+.dropdown-item,
+.dropdown-menu .dropdown-item {
+	border-radius: 6px;
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+	padding: 6px 9px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+.dropdown-divider {
+	border-color: var(--afx-line-2);
+}
+
+/* ============================== AWESOMEBAR ============================== */
+
+.awesomplete > ul {
+	border: 1px solid var(--afx-line);
+	border-radius: 10px;
+	box-shadow: var(--afx-sh-2);
+	background: var(--afx-panel);
+	padding: 5px;
+}
+
+.awesomplete > ul > li {
+	border-radius: 6px;
+	font-size: 12.5px;
+	padding: 6px 9px;
+}
+
+.awesomplete > ul > li[aria-selected="true"],
+.awesomplete > ul > li:hover {
+	background: var(--afx-brand-050);
+	color: var(--afx-brand-700);
+}
+
+.navbar-modal-wrapper .modal-content,
+.navbar-modal-wrapper .awesomebar-input-row {
+	border-radius: 12px;
+}
+
+/* =============================== MODALS =============================== */
+
+.modal-content {
+	border: 1px solid var(--afx-line);
+	border-radius: 14px;
+	box-shadow: var(--afx-sh-3);
+	background: var(--afx-panel);
+}
+
+.modal-header {
+	border-bottom: 1px solid var(--afx-line-2);
+	padding: 16px 20px;
+}
+
+.modal-title {
+	font-family: var(--afx-f-head);
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--afx-ink-h);
+}
+
+.modal-body {
+	padding: 18px 20px;
+}
+
+.modal-footer {
+	border-top: 1px solid var(--afx-line-2);
+	padding: 12px 20px;
+}
+
+/* ================================ TOASTS ================================ */
+
+.desk-alert,
+.alert-body {
+	border-radius: 10px;
+	box-shadow: var(--afx-sh-2);
+	border: 1px solid var(--afx-line);
+}
+
+/* ============================== INDICATORS ============================== */
+
+.indicator::before,
+.indicator-right::after {
+	width: 7px;
+	height: 7px;
+}
+
+.indicator.blue::before,
+.indicator-right.blue::after {
+	background: var(--afx-brand);
+}
+
+/* =============================== SCROLLBAR =============================== */
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c3cbd9;
+	border-radius: 999px;
+	border: 3px solid transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #9aa4b6;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}

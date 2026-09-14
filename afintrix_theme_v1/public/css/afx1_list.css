@@ -1,0 +1,348 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · LIST & REPORT
+   The list becomes a soft-elevated card on the canvas: a sunk header strip,
+   42px rows, hairline separators and a brand-washed selection state.
+   ========================================================================== */
+
+.layout-main-section.frappe-card,
+.layout-main-section.layout-main-list {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	overflow: hidden;
+}
+
+.page-body .layout-main-section-wrapper {
+	padding-top: 4px;
+}
+
+/* filter row above the list */
+.filter-section,
+.filter-area {
+	gap: 8px;
+}
+
+.filter-button,
+.sort-selector .btn,
+.filter-selector .btn {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 8px;
+	color: var(--afx-ink-2);
+	font-size: 12px;
+	height: 30px;
+}
+
+.filter-button:hover,
+.sort-selector .btn:hover,
+.filter-selector .btn:hover {
+	background: var(--afx-sunk);
+	color: var(--afx-ink-h);
+}
+
+/* applied filter chips */
+.filter-pill,
+.fieldname-select-area .btn,
+.tag-pill {
+	background: var(--afx-brand-050);
+	border: 1px solid var(--afx-brand-200);
+	color: var(--afx-brand-700);
+	border-radius: 999px;
+	font-size: 11.5px;
+	font-weight: 500;
+}
+
+/* ============================= HEADER STRIP ============================= */
+
+.list-row-head,
+.frappe-list .list-row-head {
+	background: var(--afx-sunk);
+	border-bottom: 1px solid var(--afx-line);
+	border-radius: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	min-height: 40px;
+}
+
+.list-row-head .list-row-col span,
+.list-row-head .list-subject span,
+.list-row-head .list-row-col .ellipsis {
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--afx-ink-3);
+}
+
+/* ================================= ROWS ================================= */
+
+.frappe-list .list-row-container {
+	border-bottom: 1px solid var(--afx-line-2);
+}
+
+.frappe-list .list-row-container:last-child {
+	border-bottom: 0;
+}
+
+.frappe-list .list-row {
+	min-height: 42px;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+	transition: background 0.1s ease;
+}
+
+.frappe-list .list-row-container:hover {
+	background: var(--afx-sunk);
+}
+
+/* frappe masks the overflowing columns behind .level-right with --bg-color;
+   on the Sapphire canvas that is grey, so repaint it to the row's surface. */
+.frappe-list .list-row .level-right,
+.frappe-list .list-row-activity {
+	background-color: var(--afx-panel);
+}
+
+.frappe-list .list-row-container:hover .list-row .level-right,
+.frappe-list .list-row-container:hover .list-row-activity {
+	background-color: var(--afx-sunk);
+}
+
+.frappe-list .list-row-head .level-right {
+	background-color: var(--afx-sunk);
+}
+
+.frappe-list .list-row-container.level.selected,
+.frappe-list .list-row-container:has(.list-row-checkbox:checked) {
+	background: var(--afx-brand-050);
+	box-shadow: inset 3px 0 0 var(--afx-brand);
+}
+
+.list-subject {
+	font-size: 12.5px;
+}
+
+.list-subject a,
+.list-subject .level-item a {
+	color: var(--afx-ink-h);
+	font-weight: 600;
+}
+
+.list-subject a:hover {
+	color: var(--afx-brand);
+	text-decoration: none;
+}
+
+.list-row-col {
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+}
+
+.list-row-col .text-muted,
+.list-row-activity .text-muted,
+.frappe-timestamp {
+	color: var(--afx-ink-4);
+	font-size: 11.5px;
+}
+
+/* numbers line up */
+.list-row-col [data-fieldtype="Currency"],
+.list-row-col [data-fieldtype="Float"],
+.list-row-col [data-fieldtype="Int"],
+.dt-cell--col-currency,
+.dt-cell__content--col-currency {
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ============================== PAGING ============================== */
+
+.list-paging-area,
+.footnote-area {
+	border-top: 1px solid var(--afx-line);
+	background: var(--afx-sunk);
+	padding: 10px 14px;
+}
+
+.list-paging-area .btn-paging,
+.list-paging-area .btn-more {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 7px;
+	font-size: 11.5px;
+	color: var(--afx-ink-2);
+}
+
+.list-paging-area .btn-paging.btn-info {
+	background: var(--afx-brand);
+	border-color: var(--afx-brand);
+	color: #fff;
+}
+
+/* ============================ LIST SIDEBAR ============================ */
+
+.layout-side-section .list-sidebar,
+.layout-side-section .sidebar-section {
+	font-size: 12.5px;
+}
+
+.layout-side-section .sidebar-label {
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--afx-ink-4);
+}
+
+/* ========================= REPORT / DATATABLE =========================
+   frappe-datatable, dressed as the design's `table.t`: a 38px sunk header
+   rule with uppercase labels, 36px rows on hairlines, tabular figures ranged
+   right, and a heavier double-rule total row at the foot. */
+
+.report-wrapper,
+.dt-instance-1 {
+	background: var(--afx-panel);
+}
+
+.report-wrapper .datatable,
+.layout-main-section .datatable {
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	box-shadow: var(--afx-sh-1);
+	overflow: hidden;
+	background: var(--afx-panel);
+}
+
+.datatable .dt-header,
+.dt-header {
+	background: var(--afx-sunk);
+	border-bottom: 1px solid var(--afx-line);
+}
+
+.datatable .dt-cell--header,
+.dt-cell--header {
+	background: var(--afx-sunk);
+	height: 38px;
+	vertical-align: middle;
+}
+
+.datatable .dt-cell--header .dt-cell__content,
+.dt-cell--header .dt-cell__content,
+.dt-cell--header-primary .dt-cell__content {
+	font-family: var(--afx-f-body);
+	font-size: 10.5px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--afx-ink-3);
+	background: transparent;
+}
+
+.datatable .dt-cell,
+.dt-cell {
+	border-color: var(--afx-line-2);
+	font-size: 12.5px;
+	color: var(--afx-ink-2);
+}
+
+.datatable .dt-row,
+.dt-row {
+	background: var(--afx-panel);
+}
+
+.datatable .dt-row:hover .dt-cell,
+.dt-row:hover .dt-cell {
+	background: var(--afx-sunk);
+}
+
+.dt-cell__content {
+	padding: 9px 13px;
+}
+
+/* figures line up and read as ink, not body grey */
+.dt-cell__content [data-fieldtype="Currency"],
+.dt-cell__content [data-fieldtype="Float"],
+.dt-cell__content [data-fieldtype="Int"],
+.dt-cell--col-currency .dt-cell__content {
+	font-variant-numeric: tabular-nums lining-nums;
+	color: var(--afx-ink-h);
+}
+
+/* the focused / selected cell keeps the brand, not frappe's default outline */
+.datatable .dt-cell--focus,
+.dt-cell--focus {
+	background: var(--afx-brand-050);
+	border: 1px solid var(--afx-brand) !important;
+	border-radius: 4px;
+}
+
+.datatable .dt-cell--highlight,
+.dt-cell--highlight {
+	background: var(--afx-brand-050);
+}
+
+.dt-row--highlight .dt-cell,
+.dt-row-totalRow .dt-cell,
+.dt-row--total .dt-cell {
+	background: var(--afx-sunk);
+	font-weight: 600;
+	color: var(--afx-ink-h);
+	border-top: 2px solid var(--afx-line);
+}
+
+/* tree reports: the disclosure chevron and group rows */
+.dt-tree-node__toggle,
+.dt-cell__content .icon {
+	color: var(--afx-ink-4);
+}
+
+.dt-cell__content .dt-tree-node__toggle:hover {
+	color: var(--afx-brand);
+}
+
+/* row-number gutter */
+.dt-cell--col-0 .dt-cell__content,
+.dt-row .dt-cell--col-0 {
+	color: var(--afx-ink-4);
+	font-size: 11px;
+	background: var(--afx-sunk);
+}
+
+/* the inline filter row frappe puts under the header */
+.dt-row-filter .dt-cell,
+.dt-filter {
+	background: var(--afx-panel);
+	border-color: var(--afx-line-2);
+}
+
+.dt-filter.dt-input {
+	background: var(--afx-sunk);
+	border: 1px solid var(--afx-line);
+	border-radius: 6px;
+	font-size: 12px;
+	color: var(--afx-ink-h);
+}
+
+.dt-filter.dt-input:focus {
+	background: var(--afx-panel);
+	border-color: var(--afx-brand);
+	box-shadow: 0 0 0 2px var(--afx-brand-050);
+	outline: none;
+}
+
+/* toolbar / footer chrome around the grid */
+.datatable .dt-toast,
+.dt-paste-target {
+	font-size: 12px;
+}
+
+.dt-scrollable {
+	background: var(--afx-panel);
+}
+
+/* the report's own filter strip above the grid */
+.report-filter-area,
+.page-form .filter-area {
+	gap: 10px 14px;
+}
