@@ -20,7 +20,7 @@ services:
         FRAPPE_BRANCH: version-16
         FRAPPE_PATH: https://github.com/frappe/frappe
         # bump the CACHE_BUST env in Dokploy to force a fresh app clone/build
-        CACHE_BUST: ${CACHE_BUST:-1}
+        CACHE_BUST: "202609160341"
       secrets:
         - apps_json
     image: afintrix-erp:local
