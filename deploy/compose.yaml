@@ -1,0 +1,177 @@
+# Afintrix ERP — production stack for Dokploy (Git-backed Compose).
+# One service (base) builds the custom image from frappe_docker's remote git
+# context, baking in erpnext + hrms + afintrix_theme_v1 (from deploy/apps.json,
+# passed as the build secret frappe_docker expects). Every other service reuses
+# that locally-built image.
+#
+# Set in Dokploy → Environment: DB_PASSWORD, ADMIN_PASSWORD, SITE_NAME.
+
+x-image: &image
+  image: afintrix-erp:local
+  pull_policy: never
+
+services:
+  # builds the image; also does the one-time common-config write, then exits
+  base:
+    build:
+      context: https://github.com/frappe/frappe_docker.git#main
+      dockerfile: images/custom/Containerfile
+      args:
+        FRAPPE_BRANCH: version-16
+        FRAPPE_PATH: https://github.com/frappe/frappe
+      secrets:
+        - apps_json
+    image: afintrix-erp:local
+    restart: "no"
+    entrypoint: ["bash", "-c"]
+    command:
+      - >
+        ls -1 apps > sites/apps.txt;
+        bench set-config -g db_host db;
+        bench set-config -gp db_port 3306;
+        bench set-config -g redis_cache "redis://redis-cache:6379";
+        bench set-config -g redis_queue "redis://redis-queue:6379";
+        bench set-config -g redis_socketio "redis://redis-queue:6379";
+        bench set-config -gp socketio_port 9000;
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  create-site:
+    <<: *image
+    restart: "no"
+    entrypoint: ["bash", "-c"]
+    command:
+      - >
+        bench new-site --no-mariadb-socket
+        --mariadb-root-password "$$DB_PASSWORD"
+        --admin-password "$$ADMIN_PASSWORD"
+        --install-app erpnext --install-app hrms --install-app afintrix_theme_v1
+        --set-default "$$SITE_NAME" || echo "site exists, skipping";
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD:?set a DB password}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set the Administrator password}
+      SITE_NAME: ${SITE_NAME:-54.39.99.223}
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  backend:
+    <<: *image
+    restart: unless-stopped
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  frontend:
+    <<: *image
+    restart: unless-stopped
+    command: ["nginx-entrypoint.sh"]
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:9000
+      FRAPPE_SITE_NAME_HEADER: ${SITE_NAME:-54.39.99.223}
+      UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
+      UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
+      UPSTREAM_REAL_IP_RECURSIVE: "off"
+      PROXY_READ_TIMEOUT: "120"
+      CLIENT_MAX_BODY_SIZE: 50m
+    depends_on:
+      backend:
+        condition: service_started
+      websocket:
+        condition: service_started
+    ports:
+      - "8080:8080"
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  websocket:
+    <<: *image
+    restart: unless-stopped
+    command: ["node", "/home/frappe/frappe-bench/apps/frappe/socketio.js"]
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  queue-short:
+    <<: *image
+    restart: unless-stopped
+    command: ["bench", "worker", "--queue", "short,default"]
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  queue-long:
+    <<: *image
+    restart: unless-stopped
+    command: ["bench", "worker", "--queue", "long,default,short"]
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  scheduler:
+    <<: *image
+    restart: unless-stopped
+    command: ["bench", "schedule"]
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  db:
+    image: mariadb:11.8
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:?set a DB password}
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    volumes:
+      - db-data:/var/lib/mysql
+
+  redis-cache:
+    image: redis:8-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-cache-data:/data
+
+  redis-queue:
+    image: redis:8-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-queue-data:/data
+
+volumes:
+  sites:
+  db-data:
+  redis-cache-data:
+  redis-queue-data:
+
+secrets:
+  apps_json:
+    file: ./apps.json

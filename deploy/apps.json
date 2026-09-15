@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://github.com/frappe/erpnext",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/hrms",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/arifulislamctg11/afintrix_theme_v1",
+    "branch": "main"
+  }
+]
