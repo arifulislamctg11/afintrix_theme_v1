@@ -1,10 +1,13 @@
 /* ==========================================================================
    AFINTRIX THEME V1 — SAPPHIRE · DESKTOP (/desk apps grid)
 
-   frappe's apps grid ships its own navbar — search, notifications, avatar and
-   the site menu — which is stock Frappe chrome and duplicates the Sapphire top
-   bar sitting directly above it. Everything it offers is already in the top
-   bar and the user menu, so it is removed here rather than restyled.
+   Two jobs here:
+   1. Remove frappe's own apps-grid navbar (search, notifications, avatar, site
+      menu) — it duplicates the Sapphire top bar directly above it.
+   2. Rebrand the tiles. The grid ships ERPNext's filled desktop SVGs and
+      app-logo cubes; afx1_desktop.js swaps each for the same Lucide line icon
+      the sidebar uses, and the styles below turn every tile into a solid brand
+      square with a white line glyph.
    ========================================================================== */
 
 .desktop-wrapper > .desktop-navbar,
@@ -12,7 +15,6 @@
 	display: none !important;
 }
 
-/* the grid then needs its own breathing room back */
 .desktop-wrapper {
 	padding-top: 8px;
 }
@@ -24,7 +26,50 @@
 	color: var(--afx-ink-2);
 }
 
-.desktop-wrapper .app-icon,
-.desktop-wrapper .icon-container {
-	border-radius: 12px;
+/* ============================ BRAND TILES ============================ */
+
+.desktop-wrapper .desktop-icon .icon-container {
+	background: var(--afx-brand);
+	border-radius: 16px;
+	display: grid;
+	place-items: center;
+	box-shadow: var(--afx-sh-1);
+	transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.desktop-wrapper .desktop-icon:hover .icon-container {
+	transform: translateY(-2px);
+	box-shadow: var(--afx-sh-2);
+}
+
+/* the swapped-in Lucide icon: white line glyph on the brand tile */
+.desktop-wrapper .desktop-icon .icon-container > .icon,
+.desktop-wrapper .desktop-icon .icon-container > svg {
+	width: 26px;
+	height: 26px;
+	stroke: #ffffff;
+	fill: none;
+	color: #ffffff;
+}
+
+/* folder tiles: a soft brand well holding the (now line-icon) previews */
+.desktop-wrapper .desktop-icon .icon-container.folder-icon {
+	background: var(--afx-brand-050);
+	border: 1px solid var(--afx-brand-100);
+	box-shadow: none;
+}
+
+.desktop-wrapper .desktop-icon .icon-container.folder-icon .desktop-icon .icon-container {
+	background: var(--afx-brand);
+	border-radius: 7px;
+	box-shadow: none;
+}
+
+/* any ERPNext svg not yet swapped stays hidden, never flashes */
+.desktop-wrapper .desktop-icon .icon-container img.app-icon {
+	display: none;
+}
+
+.desktop-wrapper .desktop-icon:hover .icon-title {
+	color: var(--afx-brand);
 }

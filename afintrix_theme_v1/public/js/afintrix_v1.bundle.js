@@ -4,3 +4,4 @@ import "./afx1_shell.js";
 import "./afx1_whitelabel.js";
 import "./afx1_charts.js";
 import "./afx1_usermenu.js";
+import "./afx1_desktop.js";
