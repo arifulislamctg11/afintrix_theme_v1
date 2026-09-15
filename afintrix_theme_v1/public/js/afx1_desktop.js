@@ -73,7 +73,7 @@
 	function retheme() {
 		if (!window.frappe || !frappe.utils || !frappe.utils.icon) return;
 
-		document.querySelectorAll(".desktop-wrapper .icon-container").forEach((ic) => {
+		document.querySelectorAll(".desktop-icon .icon-container").forEach((ic) => {
 			if (ic.dataset.afxIcon) return;
 			// a folder tile wraps nested .desktop-icon children; leave its own
 			// box alone (its nested icons are rethemed by this same loop)
@@ -90,9 +90,13 @@
 	}
 
 	function boot() {
-		if (!document.querySelector(".desktop-wrapper")) return;
+		if (!document.querySelector(".desktop-wrapper, .desktop-modal")) {
+			// still wire the observer so a later-opened modal gets themed
+		}
 		retheme();
-		const wrap = document.querySelector(".desktop-container") || document.body;
+		// observe the body: the folder modal (.desktop-modal) is appended there,
+		// outside .desktop-container, and its nested icons need theming too
+		const wrap = document.body;
 		let queued = false;
 		new MutationObserver(() => {
 			if (queued) return;

@@ -323,24 +323,67 @@ body.afx-login .page-card .page-card-actions .btn-default:not([type="submit"]):h
 /* ============================== NARROW ============================== */
 
 @media (max-width: 900px) {
+	/* Stacked layout: the split grid becomes block flow so the blue brand panel
+	   sizes to its own content instead of being pinned to a thin grid row,
+	   which was clipping the pitch off the blue background (white-on-white,
+	   invisible) and cramping the logo. */
 	.afx-login {
-		grid-template-columns: minmax(0, 1fr);
+		display: block;
+		min-height: auto;
 	}
 
 	.afx-login-brand {
-		padding: 26px 24px;
+		display: block;
+		overflow: visible;
+		padding: 30px 26px 32px;
+		text-align: center;
+	}
+
+	.afx-login-brand-mark {
+		justify-content: center;
+		margin-bottom: 20px;
 	}
 
 	.afx-login-pitch {
-		padding: 22px 0 4px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.afx-login-eyebrow {
+		margin-bottom: 10px;
 	}
 
 	.afx-login-pitch h1 {
-		font-size: 22px;
+		font-size: 23px;
+		max-width: none;
+		margin: 0 0 12px;
+	}
+
+	.afx-login-pitch p {
+		max-width: none;
+		margin: 0;
+		font-size: 12.5px;
 	}
 
 	.afx-login-pitch svg,
 	.afx-login-foot {
 		display: none;
+	}
+
+	.afx-login main,
+	.afx-login .page-content {
+		justify-content: flex-start;
+		min-height: auto;
+		padding: 24px 18px 28px;
+	}
+
+	.afx-login .page-card {
+		margin: 0 auto;
+	}
+
+	.afx-login-links {
+		justify-content: center;
+		margin-top: 18px;
+		padding-bottom: 8px;
 	}
 }
