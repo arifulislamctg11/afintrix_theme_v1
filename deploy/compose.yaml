@@ -93,6 +93,9 @@ services:
         condition: service_started
     ports:
       - "8080:8080"
+    networks:
+      - default
+      - dokploy-network
     volumes:
       - sites:/home/frappe/frappe-bench/sites
 
@@ -175,3 +178,8 @@ volumes:
 secrets:
   apps_json:
     file: ./apps.json
+
+networks:
+  default:
+  dokploy-network:
+    external: true
