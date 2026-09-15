@@ -5,9 +5,13 @@
    2. Rebrand the tiles. The grid — and the folder modal that opens from tiles
       like Accounting / People — ship ERPNext's filled desktop SVGs and
       app-logo cubes; afx1_desktop.js swaps each for the sidebar's Lucide line
-      icon, and the styles below make every tile a solid brand square. Tile
-      rules are scoped to .desktop-icon so they cover both the grid and the
-      modal.
+      icon, and the styles below make every tile a solid brand square.
+
+   NOTE ON SPECIFICITY: frappe styles the tile at
+   `.desktop-container .desktop-icon .icon-container` (a light-grey fill), so
+   every brand-tile rule below is scoped to that same depth (grid) and to
+   `.desktop-modal ...` (the folder modal) to win. A bare `.desktop-icon
+   .icon-container` is NOT specific enough and loses to frappe.
    ========================================================================== */
 
 .desktop-wrapper > .desktop-navbar,
@@ -28,7 +32,8 @@
 
 /* ============================ BRAND TILES ============================ */
 
-.desktop-icon .icon-container {
+.desktop-container .desktop-icon .icon-container,
+.desktop-modal .desktop-icon .icon-container {
 	background: var(--afx-brand);
 	border-radius: 16px;
 	display: grid;
@@ -37,14 +42,17 @@
 	transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
-.desktop-icon:hover .icon-container {
+.desktop-container .desktop-icon:hover .icon-container,
+.desktop-modal .desktop-icon:hover .icon-container {
 	transform: translateY(-2px);
 	box-shadow: var(--afx-sh-2);
 }
 
 /* the swapped-in Lucide icon: white line glyph on the brand tile */
-.desktop-icon .icon-container > .icon,
-.desktop-icon .icon-container > svg {
+.desktop-container .desktop-icon .icon-container > .icon,
+.desktop-container .desktop-icon .icon-container > svg,
+.desktop-modal .desktop-icon .icon-container > .icon,
+.desktop-modal .desktop-icon .icon-container > svg {
 	width: 26px;
 	height: 26px;
 	stroke: #ffffff;
@@ -53,13 +61,16 @@
 }
 
 /* folder tiles: a soft brand well holding the (now line-icon) previews */
-.desktop-icon .icon-container.folder-icon {
+.desktop-container .desktop-icon .icon-container.folder-icon,
+.desktop-modal .desktop-icon .icon-container.folder-icon {
 	background: var(--afx-brand-050);
 	border: 1px solid var(--afx-brand-100);
 	box-shadow: none;
 }
 
-.desktop-icon .icon-container.folder-icon .desktop-icon .icon-container {
+/* icons nested inside a folder preview stay solid brand, just smaller */
+.desktop-container .icon-container.folder-icon .desktop-icon .icon-container,
+.desktop-modal .icon-container.folder-icon .desktop-icon .icon-container {
 	background: var(--afx-brand);
 	border-radius: 7px;
 	box-shadow: none;
@@ -74,26 +85,9 @@
 	color: var(--afx-brand);
 }
 
-/* the folder modal itself: brand-consistent surface */
+/* the folder modal surface */
 .desktop-modal .modal-content,
 .desktop-modal .modal-body {
 	background: var(--afx-panel);
 	border-radius: 16px;
-}
-
-/* the folder modal outranks the base tile rule, so restate the brand tile at
-   modal depth (solid brand square, white line glyph) */
-.desktop-modal .desktop-icon .icon-container {
-	background: var(--afx-brand);
-	border-radius: 14px;
-}
-
-.desktop-modal .desktop-icon .icon-container.folder-icon {
-	background: var(--afx-brand-050);
-}
-
-.desktop-modal .desktop-icon .icon-container > .icon,
-.desktop-modal .desktop-icon .icon-container > svg {
-	stroke: #ffffff;
-	color: #ffffff;
 }
