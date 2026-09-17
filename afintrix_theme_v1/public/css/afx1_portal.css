@@ -1,0 +1,196 @@
+/* ==========================================================================
+   AFINTRIX THEME V1 — SAPPHIRE · PORTAL DOC PAGES
+   Shared styling for standalone branded pages (Privacy, Help Center) linked
+   from the sign-in footer. Scoped under .afx-doc so it never touches other
+   website pages that share the web bundle. Hides frappe's default web navbar
+   and footer on these pages for a clean, intentional look.
+   ========================================================================== */
+
+body:has(.afx-doc) .navbar,
+body:has(.afx-doc) .web-footer,
+body:has(.afx-doc) footer.web-footer,
+body:has(.afx-doc) .footer-powered {
+	display: none !important;
+}
+
+.afx-doc {
+	--afx-brand: #1e39d6;
+	--afx-brand-700: #182faf;
+	--afx-brand-050: #eef1fe;
+	--afx-gold: #d5aa55;
+	--afx-canvas: #eff2f7;
+	--afx-panel: #ffffff;
+	--afx-line: #dfe4ec;
+	--afx-ink-h: #0b0f1c;
+	--afx-ink-2: #3a4356;
+	--afx-ink-3: #697488;
+	--afx-f-head: "Montserrat", "Segoe UI", system-ui, sans-serif;
+	--afx-f-body: "Poppins", "Segoe UI", system-ui, sans-serif;
+
+	min-height: 100vh;
+	background: var(--afx-canvas);
+	font-family: var(--afx-f-body);
+	color: var(--afx-ink-2);
+	margin: 0;
+}
+
+.afx-doc-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 780px;
+	margin: 0 auto;
+	padding: 22px 24px;
+}
+
+.afx-doc-brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+}
+
+.afx-doc-brand img {
+	width: 30px;
+	height: 30px;
+	border-radius: 8px;
+	background: #fff;
+	padding: 3px;
+	box-shadow: 0 1px 2px rgba(11, 15, 28, 0.12);
+	object-fit: contain;
+}
+
+.afx-doc-brand span {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: -0.01em;
+	color: var(--afx-ink-h);
+}
+
+.afx-doc-back {
+	font-size: 12.5px;
+	font-weight: 500;
+	color: var(--afx-brand);
+	text-decoration: none;
+}
+
+.afx-doc-back:hover {
+	color: var(--afx-brand-700);
+}
+
+.afx-doc-body {
+	max-width: 780px;
+	margin: 0 auto;
+	padding: 8px 24px 40px;
+}
+
+.afx-doc-card {
+	background: var(--afx-panel);
+	border: 1px solid var(--afx-line);
+	border-radius: 16px;
+	box-shadow: 0 2px 6px rgba(11, 15, 28, 0.06), 0 8px 20px rgba(11, 15, 28, 0.07);
+	padding: 34px 38px 38px;
+}
+
+.afx-doc-eyebrow {
+	font-family: var(--afx-f-head);
+	font-weight: 600;
+	font-size: 11px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--afx-gold);
+	margin: 0 0 10px;
+}
+
+.afx-doc-card h1 {
+	font-family: var(--afx-f-head);
+	font-weight: 700;
+	font-size: 27px;
+	letter-spacing: -0.02em;
+	color: var(--afx-ink-h);
+	margin: 0 0 6px;
+}
+
+.afx-doc-updated {
+	font-size: 12.5px;
+	color: var(--afx-ink-3);
+	margin: 0 0 24px;
+}
+
+.afx-doc-card h2 {
+	font-family: var(--afx-f-head);
+	font-weight: 600;
+	font-size: 15px;
+	color: var(--afx-ink-h);
+	margin: 26px 0 8px;
+}
+
+.afx-doc-card p {
+	font-size: 13.5px;
+	line-height: 1.7;
+	color: var(--afx-ink-2);
+	margin: 0 0 12px;
+}
+
+.afx-doc-card a {
+	color: var(--afx-brand);
+}
+
+.afx-doc-card ul {
+	margin: 0 0 12px;
+	padding-left: 20px;
+}
+
+.afx-doc-card li {
+	font-size: 13.5px;
+	line-height: 1.7;
+	margin-bottom: 6px;
+}
+
+/* help center: contact tiles */
+.afx-help-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 14px;
+	margin: 20px 0 8px;
+}
+
+.afx-help-tile {
+	border: 1px solid var(--afx-line);
+	border-radius: 12px;
+	padding: 16px 18px;
+	background: var(--afx-brand-050);
+}
+
+.afx-help-tile h3 {
+	font-family: var(--afx-f-head);
+	font-weight: 600;
+	font-size: 13.5px;
+	color: var(--afx-ink-h);
+	margin: 0 0 4px;
+}
+
+.afx-help-tile p {
+	font-size: 12.5px;
+	margin: 0;
+}
+
+.afx-doc-foot {
+	max-width: 780px;
+	margin: 0 auto;
+	padding: 8px 24px 32px;
+	font-size: 11.5px;
+	color: var(--afx-ink-3);
+	text-align: center;
+}
+
+@media (max-width: 620px) {
+	.afx-doc-card {
+		padding: 24px 22px 28px;
+		border-radius: 12px;
+	}
+	.afx-doc-card h1 {
+		font-size: 22px;
+	}
+}

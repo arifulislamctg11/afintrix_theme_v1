@@ -55,7 +55,7 @@
 		links.innerHTML = `
 			<span>Afintrix ERP</span>
 			<i></i>
-			<a href="/help">Help Center</a>
+			<a href="/help-center">Help Center</a>
 			<i></i>
 			<a href="/privacy">Privacy</a>`;
 		return links;

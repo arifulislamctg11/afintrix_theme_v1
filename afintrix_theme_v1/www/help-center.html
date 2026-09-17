@@ -1,0 +1,64 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Help Center · Afintrix{% endblock %}
+
+{% block page_content %}
+<div class="afx-doc">
+	<header class="afx-doc-head">
+		<a class="afx-doc-brand" href="/login">
+			<img src="/assets/afintrix_theme_v1/images/afintrix-symbol.png" alt="Afintrix">
+			<span>Afintrix</span>
+		</a>
+		<a class="afx-doc-back" href="/login">&larr; Back to sign in</a>
+	</header>
+
+	<main class="afx-doc-body">
+		<div class="afx-doc-card">
+			<p class="afx-doc-eyebrow">Advisory Analytics ERP</p>
+			<h1>Help Center</h1>
+			<p class="afx-doc-updated">We're here to get you moving.</p>
+
+			<p>Welcome to the Afintrix ERP help center. Whether you're signing in
+			for the first time or need a hand with a specific module, start here.</p>
+
+			<div class="afx-help-grid">
+				<div class="afx-help-tile">
+					<h3>Signing in</h3>
+					<p>Use the work email and password provided by your administrator.
+					Forgot it? Use &ldquo;Forgot password?&rdquo; on the sign-in page.</p>
+				</div>
+				<div class="afx-help-tile">
+					<h3>Getting access</h3>
+					<p>Need an account or a permission changed? Your organisation's
+					Afintrix administrator can set that up for you.</p>
+				</div>
+				<div class="afx-help-tile">
+					<h3>Email support</h3>
+					<p>Reach the team at
+					<a href="mailto:support@afintrix.com">support@afintrix.com</a>
+					and we'll get back to you.</p>
+				</div>
+			</div>
+
+			<h2>Common questions</h2>
+			<p><strong>How do I reset my password?</strong><br>
+			On the sign-in page choose &ldquo;Forgot password?&rdquo; and follow the
+			emailed link, or ask your administrator to reset it.</p>
+
+			<p><strong>Which modules are available?</strong><br>
+			Accounting, inventory, people and reporting are all included — you'll
+			see them in the sidebar once you sign in, based on your role.</p>
+
+			<p><strong>Something isn't working.</strong><br>
+			Email <a href="mailto:support@afintrix.com">support@afintrix.com</a> with
+			a short description and a screenshot if you can, and we'll take a look.</p>
+
+			<h2>Contact</h2>
+			<p>Afintrix Advisory Analytics &middot;
+			<a href="https://afintrix.com" target="_blank" rel="noopener">afintrix.com</a></p>
+		</div>
+	</main>
+
+	<footer class="afx-doc-foot">&copy; 2026 Afintrix Advisory Analytics &middot; afintrix.com</footer>
+</div>
+{% endblock %}
