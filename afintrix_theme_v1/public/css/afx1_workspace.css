@@ -3,6 +3,14 @@
    Number cards, shortcuts, link groups and charts on the Sapphire canvas.
    ========================================================================== */
 
+/* The "Getting Started" onboarding widget and the automatic tour are turned
+   off in install.py (enable_onboarding) and neutralised in afx1_tours.js. This
+   is the CSS backstop for the frame before those run, so the box never flashes
+   onto a workspace. */
+.onboarding-widget-box {
+	display: none !important;
+}
+
 .widget {
 	background: var(--afx-panel);
 	border: 1px solid var(--afx-line);

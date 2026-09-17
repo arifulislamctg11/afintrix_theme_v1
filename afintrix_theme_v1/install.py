@@ -27,7 +27,10 @@ def disable_onboarding():
 	completion, which is why the panel kept reappearing — so we re-assert it on
 	install and on every migrate rather than flipping it once by hand.
 	"""
-	if frappe.db.get_single_value("System Settings", "enable_onboarding"):
+	# Always re-assert 0 — the setup wizard sets it back to 1 on completion, and
+	# after_migrate runs this again. afx1_tours.js is the client-side backstop
+	# for the window where the flag may briefly be 1.
+	if frappe.db.get_single_value("System Settings", "enable_onboarding") != 0:
 		frappe.db.set_single_value("System Settings", "enable_onboarding", 0)
 
 

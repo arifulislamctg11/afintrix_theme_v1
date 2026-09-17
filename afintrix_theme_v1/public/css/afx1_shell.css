@@ -13,6 +13,26 @@ body {
 	font-variant-numeric: lining-nums;
 }
 
+/* ------------------------- anti-flash boot gate -------------------------
+   The rail, the top bar and the white-label renaming are all applied by
+   afx1_shell.js / afx1_whitelabel.js once the desk has booted, so without
+   this the raw ERPNext desk paints for a beat first — the "nanosecond" flash
+   of the default look. Hold the desk body hidden until afx1_shell.js marks
+   <html class="afx-ready">, then fade it in already themed. The keyframe is a
+   fail-safe: even if the script never runs, #body reveals itself after 2.5s,
+   so a JS error can never leave the desk blank. */
+@keyframes afx-boot-reveal {
+	to { opacity: 1; }
+}
+html:not(.afx-ready) #body {
+	opacity: 0;
+	animation: afx-boot-reveal 0s linear 2.5s forwards;
+}
+html.afx-ready #body {
+	opacity: 1;
+	transition: opacity 0.14s ease;
+}
+
 h1, h2, h3, h4, h5, h6,
 .page-title .title-text,
 .frappe-card .card-title {

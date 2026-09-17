@@ -263,11 +263,21 @@
 		}).observe(container, { childList: true, subtree: true });
 	}
 
+	/* Reveal the desk (see the anti-flash gate in afx1_shell.css) once the rail,
+	   top bar and relabelling of the first paint are in place. One rAF lets the
+	   sibling scripts' synchronous sweeps land in the same frame. */
+	function mark_ready() {
+		requestAnimationFrame(() => {
+			document.documentElement.classList.add("afx-ready");
+		});
+	}
+
 	function boot() {
 		if (!window.frappe || !frappe.router || !document.querySelector(".body-sidebar")) {
 			return setTimeout(boot, 60);
 		}
 		refresh();
+		mark_ready();
 		watch_sidebar();
 		wire_flyout_dismissal();
 		frappe.router.on("change", () => {
@@ -279,6 +289,10 @@
 			setTimeout(refresh, 0);
 		});
 	}
+
+	// Fail-safe: never leave the desk hidden if boot() cannot complete (matches
+	// the 2.5s CSS keyframe fallback).
+	setTimeout(mark_ready, 2500);
 
 	$(document).ready(boot);
 })();
