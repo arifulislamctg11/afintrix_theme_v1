@@ -7,7 +7,9 @@
    off in install.py (enable_onboarding) and neutralised in afx1_tours.js. This
    is the CSS backstop for the frame before those run, so the box never flashes
    onto a workspace. */
-.onboarding-widget-box {
+.onboarding-widget-box,
+.body-sidebar-container .user-onboarding,
+.body-sidebar-container .onboarding-sidebar {
 	display: none !important;
 }
 

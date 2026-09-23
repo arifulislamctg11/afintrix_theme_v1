@@ -20,7 +20,7 @@ services:
         FRAPPE_BRANCH: version-16
         FRAPPE_PATH: https://github.com/frappe/frappe
         # bump the CACHE_BUST env in Dokploy to force a fresh app clone/build
-        CACHE_BUST: "202609171553"
+        CACHE_BUST: "202609241200"
       secrets:
         - apps_json
     image: afintrix-erp:local
@@ -56,6 +56,7 @@ services:
         --admin-password "$$ADMIN_PASSWORD"
         --install-app erpnext --install-app hrms --install-app afintrix_theme_v1
         --set-default "$$SITE_NAME" || echo "site exists, skipping";
+        bench --site "$$SITE_NAME" migrate;
         bench --site "$$SITE_NAME" clear-cache || true;
         bench --site "$$SITE_NAME" clear-website-cache || true;
     environment:

@@ -104,6 +104,10 @@ after_install = "afintrix_theme_v1.install.after_install"
 # every migrate as well as on install.
 after_migrate = "afintrix_theme_v1.install.after_migrate"
 
+# The setup wizard sets enable_onboarding back to 1 when it finishes; this runs
+# after it, so a freshly set-up site never shows the "Getting Started" panel.
+setup_wizard_success = "afintrix_theme_v1.install.after_setup_wizard"
+
 # Uninstallation
 # ------------
 
@@ -221,12 +225,13 @@ after_migrate = "afintrix_theme_v1.install.after_migrate"
 
 # Request Events
 # ----------------
-# before_request = ["afintrix_theme_v1.utils.before_request"]
+# ERPNext develop needs frappe develop's two-argument DateDiff; see datediff.py.
+before_request = ["afintrix_theme_v1.datediff.apply"]
 # after_request = ["afintrix_theme_v1.utils.after_request"]
 
 # Job Events
 # ----------
-# before_job = ["afintrix_theme_v1.utils.before_job"]
+before_job = ["afintrix_theme_v1.datediff.apply"]
 # after_job = ["afintrix_theme_v1.utils.after_job"]
 
 # User Data Protection

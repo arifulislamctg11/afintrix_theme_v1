@@ -140,3 +140,8 @@ def after_install():
 
 def after_migrate():
 	setup()
+
+
+def after_setup_wizard(args=None):
+	disable_onboarding()
+	frappe.clear_cache(doctype="System Settings")
