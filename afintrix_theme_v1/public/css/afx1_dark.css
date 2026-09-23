@@ -18,10 +18,13 @@
 	--afx-gold-050: #2a2317;
 	--afx-gold-200: #4b3d22;
 
-	--afx-rail: #080b18;
-	--afx-rail-2: #151c3b;
-	--afx-rail-3: #1f2950;
-	--afx-rail-ink: #7c88b4;
+	--afx-navy: #a3b2f8;
+	--afx-gold-deep: #dfa94d;
+
+	--afx-rail: #0d1466;
+	--afx-rail-2: #151d80;
+	--afx-rail-3: #1e2a9c;
+	--afx-rail-ink: #aab4ec;
 	--afx-rail-ink-2: #ffffff;
 
 	--afx-canvas: #0c101a;
@@ -74,6 +77,45 @@
 	--amber-300: #523f1d;
 	--amber-600: #dfa94d;
 	--amber-700: #e8b962;
+	--yellow-100: #292013;
+	--yellow-300: #523f1d;
+	--yellow-600: #dfa94d;
+	--yellow-700: #e8b962;
+	--orange-100: #292013;
+	--orange-300: #523f1d;
+	--orange-600: #dfa94d;
+	--orange-700: #e8b962;
+	--purple-100: #171c4a;
+	--purple-300: #2b3380;
+	--purple-600: #9aa2ec;
+	--purple-700: #b3b9f2;
+	--teal-100: #16202e;
+	--teal-300: #2c3a52;
+	--teal-600: #9fb0cc;
+	--teal-700: #b7c4da;
+	--cyan-100: #16202e;
+	--cyan-300: #2c3a52;
+	--cyan-600: #9fb0cc;
+	--cyan-700: #b7c4da;
+
+	--orange-avatar-bg: var(--afx-gold-050);
+	--orange-avatar-color: var(--afx-gold);
+	--pink-avatar-bg: var(--afx-gold-050);
+	--pink-avatar-color: var(--afx-gold);
+	--yellow-avatar-bg: var(--afx-gold-050);
+	--yellow-avatar-color: var(--afx-gold);
+	--blue-avatar-bg: var(--afx-brand-050);
+	--blue-avatar-color: var(--afx-brand);
+	--green-avatar-bg: var(--afx-brand-050);
+	--green-avatar-color: var(--afx-brand);
+	--dark-green-avatar-bg: #171c4a;
+	--dark-green-avatar-color: #a3b2f8;
+	--red-avatar-bg: #171c4a;
+	--red-avatar-color: #a3b2f8;
+	--purple-avatar-bg: #171c4a;
+	--purple-avatar-color: #a3b2f8;
+	--gray-avatar-bg: var(--afx-sunk);
+	--gray-avatar-color: var(--afx-ink-3);
 
 	--outline-gray-1: #252b3a;
 	--outline-gray-2: #2e3546;

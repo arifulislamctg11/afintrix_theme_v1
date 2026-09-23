@@ -11,13 +11,15 @@
 [data-theme="light"] {
 	/* ---- FIXED BRAND ---- */
 	--afx-brand: #1e39d6;
+	--afx-navy: #131da3;
 	--afx-on-brand: #ffffff;
 	--afx-gold: #d5aa55;
+	--afx-gold-deep: #b77f27;
 
 	/* ---- derived brand ---- */
 	--afx-brand-600: #3550e0;
 	--afx-brand-700: #182faf;
-	--afx-brand-800: #0f1f8a;
+	--afx-brand-800: #131da3;
 	--afx-brand-050: #eef1fe;
 	--afx-brand-100: #dce2fc;
 	--afx-brand-200: #c0cbf8;
@@ -26,10 +28,11 @@
 	--afx-gold-200: #efddb6;
 
 	/* ---- rail (module navigation) ---- */
-	--afx-rail: #0f1637;
-	--afx-rail-2: #1a2350;
-	--afx-rail-3: #243066;
-	--afx-rail-ink: #8e9ac8;
+	/* The rail is the brand navy; the active module takes the brand blue. */
+	--afx-rail: var(--afx-navy);
+	--afx-rail-2: #1c29b5;
+	--afx-rail-3: var(--afx-brand);
+	--afx-rail-ink: #c5ccf5;
 	--afx-rail-ink-2: #ffffff;
 
 	/* ---- shell metrics ---- */
@@ -86,7 +89,10 @@
 	--blue-800: #0f1f8a;
 	--blue-900: #0a1666;
 
-	/* Semantic colours from the Sapphire sheet. */
+	/* Semantic colours. Green and red keep their success / danger meaning;
+	   every other hue frappe uses for indicators is folded into the brand:
+	   amber, yellow and orange take the brand gold, purple the brand navy,
+	   teal and cyan a steel tint of the brand blue. */
 	--green-50: #f2faf6;
 	--green-100: #e6f4ec;
 	--green-200: #d3ecdf;
@@ -109,71 +115,92 @@
 	--red-800: #8b1c15;
 	--red-900: #661410;
 
-	--amber-50: #fdf9f0;
-	--amber-100: #fdf4e4;
-	--amber-200: #f7e7c4;
-	--amber-300: #edd6a8;
-	--amber-400: #dfb463;
-	--amber-500: #c48a1c;
-	--amber-600: #a96a05;
-	--amber-700: #8a5604;
-	--amber-800: #6f4503;
-	--amber-900: #533302;
+	--amber-50: #fbf5e9;
+	--amber-100: #f7ecd6;
+	--amber-200: #efddb6;
+	--amber-300: #e4c790;
+	--amber-400: #d5aa55;
+	--amber-500: #b77f27;
+	--amber-600: #9a6a1f;
+	--amber-700: #7d5519;
+	--amber-800: #604113;
+	--amber-900: #432d0d;
 
-	--yellow-50: #fdf9f0;
-	--yellow-100: #fdf4e4;
-	--yellow-200: #f7e7c4;
-	--yellow-300: #edd6a8;
-	--yellow-400: #dfb463;
-	--yellow-500: #c48a1c;
-	--yellow-600: #a96a05;
-	--yellow-700: #8a5604;
-	--yellow-800: #6f4503;
-	--yellow-900: #533302;
+	--yellow-50: #fbf5e9;
+	--yellow-100: #f7ecd6;
+	--yellow-200: #efddb6;
+	--yellow-300: #e4c790;
+	--yellow-400: #d5aa55;
+	--yellow-500: #b77f27;
+	--yellow-600: #9a6a1f;
+	--yellow-700: #7d5519;
+	--yellow-800: #604113;
+	--yellow-900: #432d0d;
 
-	--orange-50: #fdf7f2;
-	--orange-100: #fbeee2;
-	--orange-200: #f5dcc4;
-	--orange-300: #eec6a2;
-	--orange-400: #e0a06a;
-	--orange-500: #cc722a;
-	--orange-600: #b45d18;
-	--orange-700: #954a11;
-	--orange-800: #75390d;
-	--orange-900: #562a0a;
+	--orange-50: #fbf5e9;
+	--orange-100: #f7ecd6;
+	--orange-200: #efddb6;
+	--orange-300: #e4c790;
+	--orange-400: #d5aa55;
+	--orange-500: #b77f27;
+	--orange-600: #9a6a1f;
+	--orange-700: #7d5519;
+	--orange-800: #604113;
+	--orange-900: #432d0d;
 
-	--purple-50: #f8f5fd;
-	--purple-100: #f0ebfa;
-	--purple-200: #ded3f4;
-	--purple-300: #c7b6ea;
-	--purple-400: #a186d8;
-	--purple-500: #6e45b8;
-	--purple-600: #5e37a4;
-	--purple-700: #4e2d88;
-	--purple-800: #3d236b;
-	--purple-900: #2c194e;
+	--purple-50: #f3f4fc;
+	--purple-100: #e6e8f8;
+	--purple-200: #c8ccf0;
+	--purple-300: #a2a8e4;
+	--purple-400: #6b73cf;
+	--purple-500: #3a44b8;
+	--purple-600: #131da3;
+	--purple-700: #101888;
+	--purple-800: #0c136b;
+	--purple-900: #090e4f;
 
-	--teal-50: #f2f9fa;
-	--teal-100: #e3f1f4;
-	--teal-200: #c6e2e8;
-	--teal-300: #9fcdd7;
-	--teal-400: #6cb0bf;
-	--teal-500: #2f7d8c;
-	--teal-600: #276b78;
-	--teal-700: #205864;
-	--teal-800: #19454f;
-	--teal-900: #12333a;
+	--teal-50: #f3f5f9;
+	--teal-100: #e7ebf3;
+	--teal-200: #cdd5e5;
+	--teal-300: #aab6d1;
+	--teal-400: #7486b0;
+	--teal-500: #4a5d8f;
+	--teal-600: #3a4c7c;
+	--teal-700: #2e3d66;
+	--teal-800: #232f4f;
+	--teal-900: #182139;
 
-	--cyan-50: #f1f8fb;
-	--cyan-100: #e0f0f7;
-	--cyan-200: #bfdfee;
-	--cyan-300: #94c9e0;
-	--cyan-400: #5fa9c9;
-	--cyan-500: #2f7d8c;
-	--cyan-600: #276b78;
-	--cyan-700: #205864;
-	--cyan-800: #19454f;
-	--cyan-900: #12333a;
+	--cyan-50: #f3f5f9;
+	--cyan-100: #e7ebf3;
+	--cyan-200: #cdd5e5;
+	--cyan-300: #aab6d1;
+	--cyan-400: #7486b0;
+	--cyan-500: #4a5d8f;
+	--cyan-600: #3a4c7c;
+	--cyan-700: #2e3d66;
+	--cyan-800: #232f4f;
+	--cyan-900: #182139;
+
+	/* ---- avatars ---- frappe gives each user one of nine hues; keep them in
+	   the brand blue, navy and gold. */
+	--orange-avatar-bg: var(--afx-gold-050);
+	--orange-avatar-color: var(--afx-gold-ink);
+	--pink-avatar-bg: var(--afx-gold-050);
+	--pink-avatar-color: var(--afx-gold-ink);
+	--yellow-avatar-bg: var(--afx-gold-050);
+	--yellow-avatar-color: var(--afx-gold-ink);
+	--blue-avatar-bg: var(--afx-brand-050);
+	--blue-avatar-color: var(--afx-brand);
+	--dark-green-avatar-bg: #e6e8f8;
+	--dark-green-avatar-color: var(--afx-navy);
+	--green-avatar-bg: var(--afx-brand-050);
+	--green-avatar-color: var(--afx-brand);
+	--red-avatar-bg: #e6e8f8;
+	--red-avatar-color: var(--afx-navy);
+	--purple-avatar-bg: #e6e8f8;
+	--purple-avatar-color: var(--afx-navy);
+	--gray-avatar-bg: var(--gray-100);
+	--gray-avatar-color: var(--afx-ink-3);
 
 	/* ---- espresso semantic aliases ---- */
 	--outline-gray-1: #e6eaf2;

@@ -95,11 +95,28 @@
 	/* ---------------------------- dom sweep ---------------------------- */
 
 	const SKIP = new Set(["INPUT", "TEXTAREA", "SCRIPT", "STYLE", "CODE", "PRE"]);
+
+	// Links out to the product websites (same hosts install.py strips from the
+	// help menu). Any that still reach the page, e.g. inside workspace or
+	// dashboard text, are turned into plain text so nothing leaves the site.
+	const PRODUCT_LINK = /(^|\.|\/\/)(erpnext\.com|frappe\.io|frappeframework\.com|frappecloud\.com|frappe\.school|discuss\.frappe\.io)\b|github\.com\/frappe\b/i;
+
+	function unlink_products(root) {
+		const links = root.matches && root.matches("a[href]") ? [root] : [];
+		root.querySelectorAll("a[href]").forEach((a) => links.push(a));
+		links.forEach((a) => {
+			if (!PRODUCT_LINK.test(a.getAttribute("href") || "")) return;
+			const span = document.createElement("span");
+			span.textContent = a.textContent;
+			a.replaceWith(span);
+		});
+	}
 	const NAMES = /ERPNext|Frappe/;
 	const ATTRS = ["title", "aria-label", "placeholder"];
 
 	function sweep(root) {
 		if (!root || root.nodeType !== Node.ELEMENT_NODE) return;
+		unlink_products(root);
 
 		const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
 			acceptNode(node) {

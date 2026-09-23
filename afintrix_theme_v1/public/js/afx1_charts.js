@@ -16,14 +16,15 @@
    ========================================================================== */
 
 (function () {
+	/* Brand palette only: blue, gold, navy, deep gold, then tints. */
 	const CATEGORICAL = [
-		"#1E39D6", // brand — income / actual
-		"#9AA4B6", // neutral — expense / comparison
-		"#0E7A4C", // green — profit
-		"#D5AA55", // gold — pending
-		"#2F7D8C", // teal
-		"#6E45B8", // purple
-		"#C22A20", // red — loss
+		"#1E39D6", // brand blue — income / actual
+		"#D5AA55", // brand gold — expense / comparison
+		"#131DA3", // brand navy — profit / net
+		"#B77F27", // brand deep gold
+		"#7F92EE", // blue tint
+		"#9AA4B6", // neutral
+		"#E4C790", // gold tint
 	];
 
 	/* Ordered buckets (ageing, funnels, anything part-of-whole) read better as
@@ -35,11 +36,10 @@
 	const DARK = {
 		"#1E39D6": "#6E86F2",
 		"#9AA4B6": "#697488",
-		"#0E7A4C": "#48B98A",
 		"#D5AA55": "#E2BE79",
-		"#2F7D8C": "#5AA9BB",
-		"#6E45B8": "#A484E0",
-		"#C22A20": "#E8776B",
+		"#131DA3": "#A3B2F8",
+		"#B77F27": "#DFA94D",
+		"#E4C790": "#8A6620",
 		"#4A63E3": "#5A6FD1",
 		"#7F92EE": "#4456A5",
 		"#B6C2F7": "#32407C",

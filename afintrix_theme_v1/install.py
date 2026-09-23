@@ -78,6 +78,28 @@ def rename_workspaces():
 			frappe.db.set_value("Workspace", name, "title", title, update_modified=False)
 
 
+def remove_deprecation_notices():
+	"""Drop ERPNext's "scheduled for deprecation … use Frappe Helpdesk / CRM"
+	banner from the Support and CRM workspaces.
+
+	It is a header block in the workspace content that links out to frappe.io,
+	so it advertises another product and leaves the site. ERPNext re-syncs the
+	standard workspace JSON on migrate, which is why this runs from setup()
+	(after_migrate) rather than once.
+	"""
+	import json
+
+	for name in frappe.get_all("Workspace", filters={"content": ("like", "%scheduled for deprecation%")}, pluck="name"):
+		blocks = json.loads(frappe.db.get_value("Workspace", name, "content") or "[]")
+		kept = [
+			b
+			for b in blocks
+			if not (b.get("type") == "header" and "scheduled for deprecation" in (b.get("data") or {}).get("text", ""))
+		]
+		if len(kept) != len(blocks):
+			frappe.db.set_value("Workspace", name, "content", json.dumps(kept), update_modified=False)
+
+
 # Help-menu entries that leave the site for a product website. Matched on the
 # route rather than the label, because labels are translated.
 PRODUCT_LINK_HOSTS = (
@@ -130,6 +152,7 @@ def setup():
 	disable_onboarding()
 	apply_branding()
 	rename_workspaces()
+	remove_deprecation_notices()
 	hide_product_links()
 	frappe.clear_cache()
 

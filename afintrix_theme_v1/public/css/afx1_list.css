@@ -346,3 +346,10 @@
 .page-form .filter-area {
 	gap: 10px 14px;
 }
+
+/* Percent columns (% delivered, % billed …) are progress, not status, so they
+   use the brand blue rather than frappe's success green. */
+.list-row .progress-bar,
+.list-row .progress-bar-success {
+	background-color: var(--afx-brand);
+}
